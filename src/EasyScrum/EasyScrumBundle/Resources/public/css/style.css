@@ -1,0 +1,171 @@
+body{
+  font-family : "Arial", "Verdana", "sans-serif";
+
+}
+
+
+#welcomeDiv{
+  border: solid 1px black ;
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom: 10px;
+  background-color: #b3b3b3 ;
+
+}
+#welcomeDiv p{
+  margin-left:45%;
+  width : 200px;
+  font-weight: bold ;
+  margin-bottom: 40px;
+}
+#connexion{
+  margin-left: 40%;
+  margin-right: 30px;
+  background-color:#3388BB ;
+  width : 150px;
+  height: 30px;
+  border : none;
+  color : white;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+#connexion:hover{
+  background-color : #4b9cce ;
+}
+
+#inscription{
+  background: #333333 ;
+  width : 150px;
+  height: 30px;
+  margin-left: 40px;
+  border : none;
+  color : white;
+  font-size: 16px;
+  font-weight: bold;
+
+}
+#inscription:hover {
+  background-color: #666666;
+}
+#menu ul {
+    padding : 0px;
+    margin: 0px;
+    background-color : #333333;
+    list-style-type : none ;
+}
+#menu li {
+  display: inline-block;
+  width:150px;
+  height: 40px;
+  margin: 0px;
+  padding:0px;
+  border-right: 1px solid #CCCCCC;
+  text-align: center;
+  line-height: 40px ;
+}
+
+#menu li a {
+  display: block;
+  text-decoration: none;
+  color: #FFFFFF;
+}
+#menu li :hover{
+  background-color: #3388BB;
+}
+.fixNavigation{
+ z-index: 9999;
+ position: fixed;
+ top: 0;
+ /* Mise en forme */
+ width: 100%;
+ }
+
+#presentation {
+
+  border : solid black 1px ;
+
+}
+#gestionProjet {
+  margin-left: 60px;
+  width: 450px;
+  height: 350px;
+  display: inline-block;
+}
+
+#doc {
+
+  width: 450px;
+  height: 350px;
+  display: inline-block;
+}
+#code {
+
+  width: 450px;
+  height: 350px;
+  display: inline-block;
+}
+#communication{
+
+  width: 450px;
+  height: 350px;
+  display: inline-block;
+}
+
+.checkIcon{
+  display: inline-block;
+  width : 20px;
+  height: 20px;
+}
+.textFonction{
+  display: inline-block;
+}
+.contentFonction{
+  margin-left: 10px;
+}
+.titreImage{
+  width : 60px;
+  height: 60px;
+  margin-left: 30%;
+}
+.titre {
+  margin-left: 20%;
+  font-weight: bold ;
+}
+
+#demo {
+  border : 1px solid red;
+
+}
+
+#video {
+  margin-top: 20px;
+  margin-left: 60px;
+  display: inline-block;
+  border : 2px solid green ;
+}
+#demo p {
+
+  display: inline-block;
+  border : 1px solid blue ;
+  vertical-align: top ;
+  margin-left: 20px;
+  margin-top: 80px;
+  width : 900px;
+}
+#demo button{
+  background-color:#333333 ;
+  width : 150px;
+  height: 30px;
+  border : none;
+  color : white;
+  font-size: 16px;
+  font-weight: bold;
+  margin-left: 140px;
+
+}
+
+#demo button:hover{
+  background-color: #3388BB ;
+  border : none ;
+}

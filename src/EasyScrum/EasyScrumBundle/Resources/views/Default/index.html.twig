@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Easy Scrum</title>
+  <link rel="stylesheet" href= {{ asset('bundles/easyscrumeasyscrum/css/style.css') }}>
+  <script src=  {{ asset('bundles/easyscrumeasyscrum/js/jquery-3.1.1.min.js') }} ></script>
+  <script src=  {{ asset('bundles/easyscrumeasyscrum/js/script.js') }}  ></script>
+
+</head>
+<body>
+
+<div id="navigation">
+  <div id="menu">
+
+    <ul>
+
+        <li><a href="#">Accueil</a></li>
+        <li><a href="#">Fonctionnalités</a></li>
+        <li><a href="#">A propos</a></li>
+        <li><a href="#">Offres</a></li>
+        <li><a href="#">Aide</a></li>
+  </div>
+
+  <div id="welcomeDiv">
+    <p>Bienvenu sur EasyScrum</p>
+
+    <button id="connexion" type="button" >Connexion</button>
+    <button id="inscription" type="button">Inscription</button>
+
+  </div>
+</div>
+  <div id= "presentation">
+    <p>Avec EasyScrum ... </p>
+
+    <div id="fonctions">
+      <div id="gestionProjet">
+            <img class='titreImage' src= {{ asset('bundles/easyscrumeasyscrum/images/ganttIcon.png') }} alt="PlanifierIcon" height="" width="">
+            <p class = 'titre'>Planifier et suivre vos projets</p>
+
+            <div class="contentFonction">
+              <img class="checkIcon" src= {{ asset('bundles/easyscrumeasyscrum/images/check_box.png')}} alt="checkIcon" height="" width="">
+              <p class ="textFonction">Créer des timesheets</p>
+            </div>
+
+            <div class="contentFonction">
+              <img class="checkIcon" src= {{ asset('bundles/easyscrumeasyscrum/images/check_box.png')}} alt="checkIcon" height="" width="">
+              <p class ="textFonction">Créer des diagrammes de Gantt</p>
+            </div>
+
+            <div class="contentFonction">
+              <img class="checkIcon" src= {{ asset('bundles/easyscrumeasyscrum/images/check_box.png')}} alt="checkIcon" height="" width="">
+              <p class ="textFonction">Gérer votre budget</p>
+            </div>
+
+            <div class="contentFonction">
+              <img class="checkIcon" src= {{ asset('bundles/easyscrumeasyscrum/images/check_box.png') }} alt="checkIcon" height="" width="">
+              <p class ="textFonction">Ajouter des trakers</p>
+            </div>
+
+      </div>
+
+      <div id="doc">
+          <img class='titreImage' src=  {{ asset('bundles/easyscrumeasyscrum/images/rapport.png') }} alt="rapportIcon" height="" width="">
+          <p class = 'titre'>Rédiger vos rapport</p>
+
+          <div class="contentFonction">
+            <img class="checkIcon" src= {{ asset('bundles/easyscrumeasyscrum/images/check_box.png') }} alt="checkIcon" height="" width="">
+            <p class ="textFonction">Créer des rapports pour chaque projet</p>
+          </div>
+
+          <div class="contentFonction">
+            <img class="checkIcon" src= {{ asset('bundles/easyscrumeasyscrum/images/check_box.png') }} alt="checkIcon" height="" width="">
+            <p class ="textFonction">Créer des diagrammes (Camembert,etc)</p>
+          </div>
+
+          <div class="contentFonction">
+            <img class="checkIcon" src=  {{ asset('bundles/easyscrumeasyscrum/images/check_box.png') }} alt="checkIcon" height="" width="">
+            <p class ="textFonction">Partager vos rapport</p>
+          </div>
+
+          <div class="contentFonction">
+            <img class="checkIcon" src= {{ asset('bundles/easyscrumeasyscrum/images/check_box.png') }} alt="checkIcon" height="" width="">
+            <p class ="textFonction">Importer/Exporter des documents</p>
+          </div>
+      </div>
+
+      <div id="code">
+          <img class='titreImage' src= {{ asset('bundles/easyscrumeasyscrum/images/gitIcon.png')}} alt="gitIcon" height="checkIcon" width="">
+          <p class = 'titre'>Coder en collaboration</p>
+
+          <div class="contentFonction">
+            <img class="checkIcon" src= {{ asset('bundles/easyscrumeasyscrum/images/check_box.png')}} alt="checkIcon">
+            <p class ="textFonction">Déposer de Subversion</p>
+          </div>
+
+          <div class="contentFonction">
+            <img class="checkIcon" src= {{ asset('bundles/easyscrumeasyscrum/images/check_box.png')}} alt="checkIcon" >
+            <p class ="textFonction">Naviguer et chercher des dépôts</p>
+          </div>
+
+          <div class="contentFonction">
+            <img class="checkIcon" src= {{ asset('bundles/easyscrumeasyscrum/images/check_box.png')}} alt="checkIcon">
+            <p class ="textFonction">Visualiser le code source</p>
+          </div>
+
+          <div class="contentFonction">
+            <img class="checkIcon" src= {{ asset('bundles/easyscrumeasyscrum/images/check_box.png')}} alt="checkIcon">
+            <p class ="textFonction">Rédiger la documentation technique</p>
+          </div>
+        </div>
+
+      <div id="communication">
+            <img class='titreImage' src= {{ asset('bundles/easyscrumeasyscrum/images/communiquerIcon.png')}} alt="comIcon" height="" width="">
+            <p class = 'titre'>Communiquer et échanger</p>
+
+            <div class="contentFonction">
+              <img class="checkIcon" src= {{ asset('bundles/easyscrumeasyscrum/images/check_box.png')}} alt="checkIcon" height="" width="">
+              <p class ="textFonction">Commenter et donner un feedback</p>
+            </div>
+
+            <div class="contentFonction">
+              <img class="checkIcon" src= {{ asset('bundles/easyscrumeasyscrum/images/check_box.png')}} alt="checkIcon" height="" width="">
+              <p class ="textFonction">Envoyer des mails</p>
+            </div>
+
+            <div class="contentFonction">
+              <img class="checkIcon" src= {{ asset('bundles/easyscrumeasyscrum/images/check_box.png')}} alt="checkIcon" height="" width="">
+              <p class ="textFonction">Chatter</p>
+            </div>
+
+            <div class="contentFonction">
+              <img class="checkIcon" src= {{ asset('bundles/easyscrumeasyscrum/images/check_box.png')}} alt="checkIcon" height="" width="">
+              <p class ="textFonction">Reporter des bugs</p>
+            </div>
+        </div>
+
+    </div>
+  </div>
+
+  <div id="demo">
+    <div id="video">
+      <video width="600" height="300" controls>
+        <source src= {{ asset('bundles/easyscrumeasyscrum/videos/demo.mp4') }} type="video/mp4">
+            Your browser does not support the video tag.
+     </video>
+  </div>
+
+    <p>Xxxxxxxxxxxxxxxxxxx
+    xxxxxxxxxxxxxxxxxxxxxxxx
+    xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+    xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+    xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+    xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</p>
+
+      <button id="demoEnLigne" type="button" onclick="alert('Redirection page de demo');">Demo en ligne</button>
+  </div>
+</body>
+<footer>
+  
+
+</footer>
+
+</html>

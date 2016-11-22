@@ -1,0 +1,21 @@
+security:
+    encoders:
+        FOS\UserBundle\Model\UserInterface: bcrypt
+
+    providers:
+        fos_userbundle:
+            id: fos_user.user_provider.username
+
+    firewalls:
+       dev:
+          pattern: ^/(_(porfiler|wdt))/ #On désactive la sécurité pour les fichiers public(images, css, js ...) en mode développement
+          security: false
+       main: # tout ce que n'est pas en mode dev
+          pattern: ^/
+          form_login:
+              provider: fos_userbundle
+              csrf_token_generator: security.csrf.token_manager
+              # if you are using Symfony < 2.8, use the following config instead:
+              # csrf_provider: form.csrf_provider
+          logout:       true
+          anonymous:    true

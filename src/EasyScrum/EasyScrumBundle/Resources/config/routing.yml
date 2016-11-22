@@ -1,0 +1,3 @@
+easy_scrum_easy_scrum_homepage:
+    path:     /
+    defaults: { _controller: EasyScrumEasyScrumBundle:Default:index }
