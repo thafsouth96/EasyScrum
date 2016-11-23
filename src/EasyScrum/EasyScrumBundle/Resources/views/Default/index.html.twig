@@ -10,9 +10,11 @@
 </head>
 <body>
 
+<!--la div fixé -->
 <div id="navigation">
   <div id="menu">
 
+  <!--La barre du menu -->
     <ul>
 
         <li><a href="#">Accueil</a></li>
@@ -30,9 +32,9 @@
 
   </div>
 </div>
-  <div id= "presentation">
-    <p>Avec EasyScrum ... </p>
 
+  <div id= "presentation">
+    <p id="presentationTexte">Avec EasyScrum ... </p>
     <div id="fonctions">
       <div id="gestionProjet">
             <img class='titreImage' src= {{ asset('bundles/easyscrumeasyscrum/images/ganttIcon.png') }} alt="PlanifierIcon" height="" width="">
@@ -157,8 +159,46 @@
   </div>
 </body>
 <footer>
-  
 
+  <div id="detailFooter">
+      <div id="about">
+          <img id="aboutIcon" src= {{ asset('bundles/easyscrumeasyscrum/images/aboutIcon.png')}} alt="aboutIcon">
+          <p class="titreFooter">A propos</p>
+          <p class="texteFooter">Xxxxxxxxxxxxxxxxxxxxxxxxx
+                              xxxxxxxxxxxxxxxxxxxxxxxxx
+                              xxxxxxxxxxxxxxxxxxxxxxxxx
+                              xxxxxxxxxxxxxxxxxxxxxxxxx</p>
+      </div>
+
+      <div id="contactUs">
+          <img id="contactIcon" src= {{ asset('bundles/easyscrumeasyscrum/images/contactIcon.png')}} alt="contactIcon">
+          <p class="titreFooter">Contactez-nous</p>
+          <p class="texteFooter">Xxxxxxxxxxxxxxxxxxxxxxxxx
+                              xxxxxxxxxxxxxxxxxxxxxxxxx
+                              xxxxxxxxxxxxxxxxxxxxxxxxx
+                              xxxxxxxxxxxxxxxxxxxxxxxxx</p>
+      </div>
+
+      <div id="plan">
+          <img id="planIcon" src= {{ asset('bundles/easyscrumeasyscrum/images/planIcon.png')}} alt="planIcon">
+          <p class="titreFooter">Plan du site</p>
+          <p class="texteFooter">Xxxxxxxxxxxxxxxxxxxxxxxxx
+                              xxxxxxxxxxxxxxxxxxxxxxxxx
+                              xxxxxxxxxxxxxxxxxxxxxxxxx
+                              xxxxxxxxxxxxxxxxxxxxxxxxx</p>
+      </div>
+  </div>
+
+  <div id="miniFooter">
+      <p id="copyright"> Copyright © Evolutis </p>
+
+      <div id="networkIcon">
+        <img id="facebook" src= {{ asset('bundles/easyscrumeasyscrum/images/facebookIcon.png')}} alt="Facebook">
+        <img id="twitter" src= {{ asset('bundles/easyscrumeasyscrum/images/twitterIcon.png')}} alt="Twitter">
+        <img id="LinkedIn" src= {{ asset('bundles/easyscrumeasyscrum/images/linkedinIcon.png')}} alt="LinkedIn">
+        <img id="google+" src= {{ asset('bundles/easyscrumeasyscrum/images/google+Icon.png')}} alt="Google+">
+      </div>
+  </di>
 </footer>
 
 </html>

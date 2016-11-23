@@ -1,0 +1,15 @@
+
+<link rel="stylesheet" href= {{ asset('bundles/easyscrumeasyscrum/css/style.css') }}>
+<script src=  {{ asset('bundles/easyscrumeasyscrum/js/jquery-3.1.1.min.js') }} ></script>
+<script src=  {{ asset('bundles/easyscrumeasyscrum/js/script.js') }}  ></script>
+
+<!--{% block title %}Connexion{% endblock %}-->
+<div id ="connexionBody">
+  <title> Connexion </title>
+
+  <div id="connexionForm">
+    {% block content %}
+        {% block fos_user_content %}{% endblock %}
+    {% endblock %}
+  </div>
+</div>
