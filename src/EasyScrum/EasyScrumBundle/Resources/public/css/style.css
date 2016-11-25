@@ -323,3 +323,124 @@ label[for=remember_me]{
 /***********************************************/
 /***************** ENDOF Page accueil**********/
 /*********************************************/
+
+/*******************************************/
+/***************** CSS Menus dashbord *****/
+/*****************************************/
+#content{
+  display: inline-block;
+  width: 700px ;
+  height: 592px ;
+  margin : 0px;
+  padding: 0px;
+  border : 1px solid red ;
+}
+/* Menu Vertical */
+#menuVertical {
+  width: 20%;
+  background-color: #f1f1f1;
+  /*position: fixed;*/
+  height: 100%;
+  margin : 0px;
+  display: inline-block;
+  margin : 0px ;
+  padding: 0px;
+  border : 1px solid blue ;
+  vertical-align: top ;
+}
+#menuVertical ul {
+  margin: 0;
+  padding: 0;
+
+  overflow: auto;
+
+}
+#menuVertical li a {
+   display: block;
+   color: #000;
+   padding: 8px 16px;
+   text-decoration: none;
+}
+
+#menuVertical li a.active {
+  background-color: #4CAF50;
+   color: white;
+}
+#menuVertical a:hover:not(.active){
+  background-color: #555;
+  color: white;
+}
+
+
+/* Menu Horizontal */
+#menuHorizontal ul {
+    border : 1px solid red ;
+    width : 100% ;
+    height: 30% ;
+    background-color : #b3b3b3;
+    margin-top: 0px;
+    margin-bottom: 0px;
+
+}
+
+#menuHorizontal li {
+  display: inline-block;
+  width:150px;
+  height: 40px;
+  margin: 0px;
+  padding:0px;
+  text-align: center;
+  line-height: 30px ;
+}
+#menuHorizontal li a {
+  display: block;
+  text-decoration: none;
+  color: #FFFFFF;
+  margin : 0px ;
+}
+/*
+#menuHorizontal li :hover{
+  background-color: #4CAF50;
+}*/
+.imageMenu {
+  height: 40px ;
+  width : 45px ;
+  display: inline-block;
+  margin : 0px;
+}
+.texteMenu {
+  display: inline-block;
+  margin-left: 10px;
+  margin-bottom: 0px;
+  margin-top:0px;
+  vertical-align: top ;
+
+}
+.imageMenuH {
+  height: 30px ;
+  width: 30px ;
+  display: inline-block;
+  margin : 0px ;
+
+}
+#userName{
+  position: absolute;
+  left : 10px ;
+  top : 10px ;
+}
+#notifIcon{
+  position: absolute;
+  right : 85px ;
+  top : 10px ;
+}
+#chatIcon{
+  position: absolute;
+  right : 45px ;
+  top : 10px ;
+}
+
+#logoutIcon{
+  position: absolute;
+  right : 10px;
+  top : 10px ;
+}

@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>{% block title %}EasyScrum {% endblock%} </title>
+  <link rel="stylesheet" href= {{ asset('bundles/easyscrumeasyscrum/css/style.css') }}>
+  <script src=  {{ asset('bundles/easyscrumeasyscrum/js/jquery-3.1.1.min.js') }} ></script>
+  <script src=  {{ asset('bundles/easyscrumeasyscrum/js/script.js') }}  ></script>
+
+</head>
+
+<body>
+  <div id="menuHorizontal" >
+      <ul>
+        <li><a id="userName" class="active" href="#name"><img class='imageMenuH' src= {{ asset('bundles/easyscrumeasyscrum/images/profileIcon.png')}} alt="profileIcon"><p class="texteMenu">userName</p></a></li>
+
+          <li><a href="#notification"><img id='notifIcon' class='imageMenuH' src= {{ asset('bundles/easyscrumeasyscrum/images/notifIcon.png')}} alt="notifIcon"></a></li>
+          <li><a href="#chat"><img id='chatIcon' class='imageMenuH' src= {{ asset('bundles/easyscrumeasyscrum/images/chat-icon.png')}} alt="chatIcon"></a></li>
+          <li><a href="#déconnexion"><img id='logoutIcon' class='imageMenuH' src= {{ asset('bundles/easyscrumeasyscrum/images/Logout.png')}} alt="logoutIcon"></a></li>
+      </ul>
+  </div>
+  <div id="menuVertical">
+      <ul>
+        <li><a class="active" href="#Projet"><img class='imageMenu' src= {{ asset('bundles/easyscrumeasyscrum/images/projetIcon.png')}} alt="projetIcon"><p class="texteMenu">Projets</p></a></li>
+        <li><a href="#Personnes"><img class='imageMenu' src= {{ asset('bundles/easyscrumeasyscrum/images/peopleIcon.png')}} alt="peopleIcon"><p class="texteMenu">Personnes</p></a></li>
+        <li><a href="#Code"><img class='imageMenu' src= {{ asset('bundles/easyscrumeasyscrum/images/gitIcon.png')}} alt="gitIcon"><p class="texteMenu">Dépôt Code</p></a></li>
+        <li><a href="#Doc"><img class='imageMenu' src= {{ asset('bundles/easyscrumeasyscrum/images/docIcon.png')}} alt="docIcon"><p class="texteMenu">Documents</p></a></li>
+        <li><a href="#TimeSheet"><img class='imageMenu' src= {{ asset('bundles/easyscrumeasyscrum/images/timesheetIcon.png')}} alt="timesheetIcon"><p class="texteMenu">Timesheet</p></a></li>
+        <li><a href="#Forum"><img class='imageMenu' src= {{ asset('bundles/easyscrumeasyscrum/images/ForumIcon.png')}} alt="forumIcon"><p class="texteMenu">Forum</p></a></li>
+        <li><a href="#Calendrier"><img class='imageMenu' src= {{ asset('bundles/easyscrumeasyscrum/images/calendarIcon.png')}} alt="calendarIcon"><p class="texteMenu">Calendrier</p></a></li>
+        <li><a href="Trackers"><img class='imageMenu' src= {{ asset('bundles/easyscrumeasyscrum/images/trackIcon1.png')}} alt="trackIcon"><p class="texteMenu">Trackers</p></a></li>
+        <li><a href="Paramètres"><img class='imageMenu' src= {{ asset('bundles/easyscrumeasyscrum/images/settingsIcon.png')}} alt="settingsIcon"><p class="texteMenu">Paramètres</p></a></li>
+      </ul>
+  </div>
+
+  <div id="content">
+
+  {% block content %}
+  {% endblock %}
+
+  </div>
+</body>
+
+<footer>
+  <div id="miniFooter">
+      <p id="copyright"> Copyright © Evolutis </p>
+
+      <div id="networkIcon">
+        <img id="facebook" src= {{ asset('bundles/easyscrumeasyscrum/images/facebookIcon.png')}} alt="Facebook">
+        <img id="twitter" src= {{ asset('bundles/easyscrumeasyscrum/images/twitterIcon.png')}} alt="Twitter">
+        <img id="LinkedIn" src= {{ asset('bundles/easyscrumeasyscrum/images/linkedinIcon.png')}} alt="LinkedIn">
+        <img id="google+" src= {{ asset('bundles/easyscrumeasyscrum/images/google+Icon.png')}} alt="Google+">
+      </div>
+  </di>
+</footer>
+</html>

@@ -10,4 +10,8 @@ class DefaultController extends Controller
     {
         return $this->render('EasyScrumEasyScrumBundle:Default:index.html.twig');
     }
+    public function dashboardAction()
+    {
+      return $this->render('EasyScrumEasyScrumBundle:Default:dashboard.html.twig');
+    }
 }

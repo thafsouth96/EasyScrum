@@ -1,3 +1,9 @@
 easy_scrum_easy_scrum_homepage:
     path:     /
     defaults: { _controller: EasyScrumEasyScrumBundle:Default:index }
+easy_scrum_dashbord:
+    path: /dashboard
+    defaults: { _controller: EasyScrumEasyScrumBundle:Default:dashboard}
+easy_scrum_projets:
+  path: /dashboard/projets
+  defaults: { _controller: EasyScrumEasyScrumBundle:Projet:index }
