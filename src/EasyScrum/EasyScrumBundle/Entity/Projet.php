@@ -3,6 +3,7 @@
 namespace EasyScrum\EasyScrumBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection ;
 
 /**
  * Projet
@@ -29,6 +30,13 @@ class Projet
     private $nom;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="description", type="string", length=255)
+     */
+    private $description;
+
+    /**
       * @var Datetime
       *@ORM\Column(name="dateCreation", type="datetime")
       */
@@ -51,7 +59,7 @@ class Projet
       *@ORM\OneToMany(targetEntity="EasyScrum\EasyScrumBundle\Entity\Sprint", mappedBy="projet")
       *
       */
-      private $sprints
+      private $sprints;
 
     /**
       *@ORM\OneToOne(targetEntity="EasyScrum\EasyScrumBundle\Entity\Product_Backlog", cascade={"persist"})
@@ -59,22 +67,32 @@ class Projet
       */
       private $product_backlog ;
 
+      public function __construct(){
+        $this->description = null ;
+        $this->nom = null  ;
+        $this->active = true;
+        $this->releases = new ArrayCollection();
+        $this->sprints = new ArrayCollection();
+        $this->dateCreation = new \Datetime("now"); //aujourd'hui
 
-      public function __construct($nom,$active){
+      }
+
+
+      public function __construct1($nom,$active){
 
           $this->nom = $nom ;
           $this->active = $active ;
           $this->releases = new ArrayCollection();
           $this->sprints = new ArrayCollection();
-          $this->dateCreation = new \Datetime("now" , new DateTimezone("Europe/Paris"));
+          $this->dateCreation = new \Datetime("now" );
       }
 
-      public function __construct1($nom){
+      public function __construct2($nom){
         $this->nom = $nom ;
         $this->active = true;
         $this->releases = new ArrayCollection();
         $this->sprints = new ArrayCollection();
-        $this->dateCreation = new \Datetime("now" , new DateTimezone("Europe/Paris")); //aujourd'hui
+        $this->dateCreation = new \Datetime("now" ); //aujourd'hui
 
       }
 
@@ -83,7 +101,7 @@ class Projet
     }
 
     public function getBacklogP(){
-      return $this->product_backlog; 
+      return $this->product_backlog;
     }
     /**
      * Get id
@@ -103,6 +121,11 @@ class Projet
     public function getDateCreation(){
 
         return $this->dateCreation ;
+    }
+
+    public function setDateCreation($date){
+
+        $this->dateCreation = $date ; 
     }
 
     /**
@@ -146,6 +169,14 @@ class Projet
         return $this->nom;
     }
 
+    public function getDescription(){
+
+      return $this->description;
+    }
+
+    public function setDescription($description){
+      $this->description = $description;
+    }
     public function getReleases(){
       return $this->releases ;
     }
@@ -166,7 +197,7 @@ class Projet
       $this->sprints[] = $sprint ;
       return $this ;
     }
-    public function removeSprints(Sprint $sprint){
+    public function removeSprint(Sprint $sprint){
       $this->sprints->removeElement($sprint);
     }
 

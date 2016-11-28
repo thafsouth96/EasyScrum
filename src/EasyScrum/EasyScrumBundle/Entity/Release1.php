@@ -4,6 +4,7 @@ namespace EasyScrum\EasyScrumBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
+
 /**
  * Release1
  *
@@ -22,13 +23,47 @@ class Release1
     private $id;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="projet", type="string", length=255, unique=true)
-     */
-    private $projet;
+      * @ORM\Column(name="nom" , type="string")
+      */
+    private $nom;
+
+    /**
+      * @var string
+      *
+      * @ORM\Column(name="description", type="string", length=255)
+      */
+    private $description ;
+
+    /**
+      * @var Datetime
+      *
+      *@ORM\Column(name="dateLivraisonP", type="datetime")
+      */
+    private $dateLivraisonP ;
+
+    /**
+      * @var Datetime
+      *
+      *@ORM\Column(name="dateLivraisonR", type="datetime")
+      */
+    private $dateLivraisonR ;
+
+    /**
+      * @ORM\ManyToOne(targetEntity="EasyScrum\EasyScrumBundle\Entity\Projet")
+      */
+
+    private $projet ;
 
 
+
+    public function __construct($nom,$projet){
+
+      $this->nom = $nom ;
+      $this->projet=$projet;
+      $this->description = null ;
+      $this->dateLivraisonR = null ;
+      $this->dateLivraisonP = new \Datetime("now" , new DateTimezone("Europe/Paris"));
+    }
     /**
      * Get id
      *
@@ -38,29 +73,18 @@ class Release1
     {
         return $this->id;
     }
-
-    /**
-     * Set projet
-     *
-     * @param string $projet
-     *
-     * @return Release1
-     */
-    public function setProjet($projet)
-    {
-        $this->projet = $projet;
-
-        return $this;
+    public function getDescription(){
+      return $this->description ;
+    }
+    public function setDescription($description){
+      $this->description = $description ;
     }
 
-    /**
-     * Get projet
-     *
-     * @return string
-     */
-    public function getProjet()
-    {
-        return $this->projet;
+    public function getProjet(){
+      return $this->projet ;
     }
+    public function setProjet(Projet $projet){
+      return $this->projet = $projet ;
+    }
+
 }
-

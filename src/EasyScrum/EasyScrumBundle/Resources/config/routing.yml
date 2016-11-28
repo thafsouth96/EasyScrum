@@ -7,3 +7,6 @@ easy_scrum_dashbord:
 easy_scrum_projets:
   path: /dashboard/projets
   defaults: { _controller: EasyScrumEasyScrumBundle:Projet:index }
+project_create:
+  path: /dashboard/projets/createProject
+  defaults: { _controller: EasyScrumEasyScrumBundle:Projet:Create}
