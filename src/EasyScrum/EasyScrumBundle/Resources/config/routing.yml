@@ -4,9 +4,14 @@ easy_scrum_easy_scrum_homepage:
 easy_scrum_dashbord:
     path: /dashboard
     defaults: { _controller: EasyScrumEasyScrumBundle:Default:dashboard}
-easy_scrum_projets:
+show_projets:
   path: /dashboard/projets
-  defaults: { _controller: EasyScrumEasyScrumBundle:Projet:index }
+  defaults: { _controller: EasyScrumEasyScrumBundle:Projet:showProjects }
 project_create:
-  path: /dashboard/projets/createProject
+  path: /dashboard/createProject
   defaults: { _controller: EasyScrumEasyScrumBundle:Projet:Create}
+project_view:
+  path: /dashboard/projets/{id}
+  defaults: { _controller: EasyScrumEasyScrumBundle:Projet:projetView }
+  requirements:
+    id : \d+

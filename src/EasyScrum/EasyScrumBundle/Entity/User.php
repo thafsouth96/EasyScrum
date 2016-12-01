@@ -1,5 +1,4 @@
 <?php
-// src/AppBundle/Entity/User.php
 
 namespace EasyScrum\EasyScrumBundle\Entity;
 
@@ -19,10 +18,30 @@ class User extends BaseUser
      */
     protected $id;
 
+    /**
+      *@ORM\ManyToOne(targetEntity="EasyScrum\EasyScrumBundle\Entity\Projet")
+      *
+      */
+      private $projets;
+
     public function __construct()
     {
         parent::__construct();
-        
+
     }
+
+    public function getProjets(){
+       return $this->projets ;
+    }
+    public function addProjet(Projet $projet){
+      $this->projets[] = $projet ;
+      return $this ;
+    }
+    public function removeProjet(Projet $projet){
+      $this->projets->removeElement($projet);
+    }
+
+
+
 }
 ?>

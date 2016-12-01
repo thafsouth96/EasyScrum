@@ -1,0 +1,16 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+<div class="panel panel-info" style="margin-top: 20px" >
+      <div class="panel-heading">
+              <div class="panel-title">Réinitialiser le mot de passe</div>
+              <div style="float:right; font-size: 80%; position: relative; top:-10px"><a href= "{{ path('fos_user_security_login')}}">Connectez-vous ici</a></div>
+      </div>
+    <div style="padding-top:30px" class="panel-body" >
+        {{ form_start(form, { 'action': path('fos_user_resetting_reset', {'token': token}), 'attr': { 'class': 'fos_user_resetting_reset' } }) }}
+            {{ form_widget(form) }}
+            <div style="text-align:center; margin-bottom: 20px " >
+                <input class="btn btn-lg btn-primary" type="submit" value="{{ 'resetting.reset.submit'|trans }}" />
+            </div>
+        {{ form_end(form) }}
+      </div>
+</div>

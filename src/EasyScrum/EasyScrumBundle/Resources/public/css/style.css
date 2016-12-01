@@ -270,60 +270,6 @@ body{
 /*********************************************/
 
 
-/***********************************************/
-/***************** Page accueil****************/
-/*********************************************/
-#connexionBody{
-    text-align: center;
-    border: 2px solid black ;
-    margin : 0 auto ;
-    width : 350px ;
-    height: auto ;
-    margin-top:200px;
-
-}
-
-#connexion title {
-
-}
-
-#connexionForm {
-  padding: 20px;
-
-
-}
-
-
-label[for=username]{
-
-}
-
-/* champs de saisie nom d'utilisateur */
-#username{
-
-}
-
-label[for=password]{
-
-}
-
-#password{
-
-}
-
-label[for=remember_me]{
-
-
-}
-
-#remember_me{
-
-
-}
-/***********************************************/
-/***************** ENDOF Page accueil**********/
-/*********************************************/
-
 /*******************************************/
 /***************** CSS Menus dashbord *****/
 /*****************************************/
@@ -373,7 +319,8 @@ label[for=remember_me]{
 
 
 /* Menu Horizontal */
-#menuHorizontal ul {
+
+/*#menuHorizontal ul {
     border : 1px solid red ;
     width : 100% ;
     height: 30% ;
@@ -423,7 +370,8 @@ label[for=remember_me]{
   margin : 0px ;
 
 }
-#userName{
+
+/*#utilisateurNom{
   position: absolute;
   left : 10px ;
   top : 10px ;
@@ -443,4 +391,4 @@ label[for=remember_me]{
   position: absolute;
   right : 10px;
   top : 10px ;
-}
+}*/

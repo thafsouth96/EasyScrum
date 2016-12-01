@@ -1,0 +1,18 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+<div class="panel panel-info" style="margin-top: 20px" >
+      <div class="panel-heading">
+              <div class="panel-title">Mot de passe modifié</div>
+      </div>
+      <div style="padding-top:30px" class="panel-body" >
+
+          <div class="fos_user_user_show">
+              <p>{{ 'profile.show.username'|trans }}: {{ user.username }}</p>
+              <p>{{ 'profile.show.email'|trans }}: {{ user.email }}</p>
+          </div>
+
+          <div style="text-align:center; margin-bottom: 20px; margin-top: 20px " >
+              <a href= "{{ path('fos_user_security_login')}}"><input class="btn btn-lg btn-primary" value="Connectez-Vous" /></a>
+          </div>
+      </div>
+</div>
