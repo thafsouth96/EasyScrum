@@ -1,5 +1,17 @@
 
+<div class="panel panel-warning" id="formCreateProject">
 
-<h3>Créer un projet </h3>
+  <div class="panel-heading" id = "titleCreateProject">Créer un projet </div>
 
-  {{ form(form) }}
+
+    <form method="POST" action="{{path('project_create')}}">
+      <div class="panel-body" id="formCreateProjectContent">
+      {{form_start(form)}}
+        {{ form_widget(form)}}
+        <input type="submit" value="Créer" class="btn btn-warning" id="createBtn" />
+
+      {{ form_end(form) }}
+      </div>
+  </form>
+
+</div>

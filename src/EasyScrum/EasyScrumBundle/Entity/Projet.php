@@ -3,6 +3,9 @@
 namespace EasyScrum\EasyScrumBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\Id;
+use Doctrine\ORM\Mapping\Column;
+use Doctrine\ORM\Mapping\ManyToOne;
 use Doctrine\Common\Collections\ArrayCollection ;
 
 /**
@@ -14,18 +17,9 @@ use Doctrine\Common\Collections\ArrayCollection ;
 class Projet
 {
     /**
-     * @var int
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    private $id;
-
-    /**
      * @var string
      *
-     * @ORM\Column(name="nom", type="string", length=255, unique=true)
+     * @Id @Column(name="nom", type="string", length=255)
      */
     private $nom;
 
@@ -91,20 +85,15 @@ class Projet
       private $product_backlog ;
 
     /**
-      *@ORM\ManyToMany(targetEntity="EasyScrum\EasyScrumBundle\Entity\Team")
+      *@ORM\ManyToOne(targetEntity="EasyScrum\EasyScrumBundle\Entity\Team", inversedBy="projets")
       *
       */
-      private $teams ;
+      private $team ;
 
     /**
-      *@ORM\ManyToMany(targetEntity="EasyScrum\EasyScrumBundle\Entity\User")
+      *@Id @ManyToOne(targetEntity="EasyScrum\EasyScrumBundle\Entity\User", inversedBy="projets", cascade={"ALL"})
       *
-      */
-        private $collaborateurs;
-    /**
-      *@ORM\ManyToOne(targetEntity="EasyScrum\EasyScrumBundle\Entity\User")
-      *
-      */
+      **/
       private $productOwner ;
 
 
@@ -299,19 +288,15 @@ class Projet
       $this->sprints->removeElement($sprint);
     }
 
-    public function getTeams(){
-      return $this->teams;
+    public function getTeam(){
+      return $this->team;
     }
 
-    public function addTeam(Team $team){
-      $this->teams[] = $team ;
-      return $this ;
-    }
-    public function removeTeam(Team $team){
-      $this->teams->removeElement($team);
+    public function setTeam(Team $team){
+      $this->team = $team ;
     }
 
-    public function getCollaborateur(){
+    public function getCollaborateurs(){
       return $this->collaborateurs;
     }
 

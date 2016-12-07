@@ -1,5 +1,6 @@
 $(document).ready(function(){
 
+
   $('#connexion').click(function(){
       $(location).attr('href','http://localhost/Symfony/web/app_dev.php/login');
   });
@@ -8,7 +9,7 @@ $(document).ready(function(){
   });
 
   $('#projetsClick').click(function(){
-    $("#content").load(urlProjetsList);
+    $("#content").load(urlProjets);
     $('#menuVertical ul li a').removeClass("active");
     $(this).addClass("active");
   });
@@ -66,5 +67,36 @@ $(document).ready(function(){
    });
  });
 
+ $("#content").on('click', '#plusCreate', function(){
+
+   $.ajax({
+     type : "POST",
+     url: urlCreateProject,
+     success: function(){
+       $("#content").load(urlCreateProject);
+
+     }
+   });
+ });
+
+ $("#projects").on('click','#listAffichage', function(){
+    //$("#content").load(urlProjetsList);
+    //alert("coucou je fonctionne ") ;
+ });
+
+ // Traiter l'exception d'insertion d'un projet du meme nom
+
+ /*$("#content").on('click','#createBtn',function(){
+   $.ajax({
+     url : urlCreateProject,
+     dataType : 'json',
+     success : function(){
+       alert("Projet Créer");
+     },
+     error: function(){
+       alert("Projet existant");
+     }
+   });
+ });*/
 
 });

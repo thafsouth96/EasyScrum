@@ -3,7 +3,7 @@
 namespace EasyScrum\EasyScrumBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-
+use Doctrine\Common\Collections\ArrayCollection;
 /**
  * Team
  *
@@ -35,6 +35,21 @@ class Team
      */
     private $fonction;
 
+    /**
+      *@ORM\OneToMany(targetEntity="EasyScrum\EasyScrumBundle\Entity\Projet", mappedBy="team")
+      *@ORM\JoinColumn(name="team_projet", referencedColumnName="nom")
+      */
+    private $projets;
+
+    public function __construct()
+    {
+      $this->projets = new ArrayCollection() ;
+    }
+
+    /**
+      *@ORM\ManyToMany(targetEntity="EasyScrum\EasyScrumBundle\Entity\User", mappedBy="teams")
+      */
+    private $users ;
 
     /**
      * Get id
@@ -70,6 +85,7 @@ class Team
         return $this->nom;
     }
 
+
     /**
      * Set fonction
      *
@@ -93,5 +109,37 @@ class Team
     {
         return $this->fonction;
     }
+
+    public function getProjets(){
+      return $this->projets ;
+    }
+
+    public function addProjet(Projet $projet)
+    {
+      $this->projets[] = $projet;
+
+      return $this;
+    }
+
+  public function removeProjet(Projet $projet)
+  {
+    $this->projets->removeElement($projet);
+  }
+
+  public function getUsers(){
+    return $this->users ;
+  }
+
+  public function addUser(User $user)
+  {
+    $this->users[] = $user;
+
+    return $this;
+  }
+
+public function removeUser(User $user)
+{
+  $this->users->removeElement($user);
 }
 
+}

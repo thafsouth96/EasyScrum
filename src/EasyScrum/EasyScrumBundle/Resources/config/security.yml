@@ -8,7 +8,7 @@ security:
 
     firewalls:
        dev:
-          pattern: ^/(_(porfiler|wdt))/ #On désactive la sécurité pour les fichiers public(images, css, js ...) en mode développement
+          pattern: ^/(_(porfiler|wdt)|css|images|js)/ #On désactive la sécurité pour les fichiers public(images, css, js ...) en mode développement
           security: false
        main: # tout ce que n'est pas en mode dev
           pattern: ^/
@@ -21,6 +21,6 @@ security:
               login_path: fos_user_security_login
               check_path: fos_user_security_check
               always_use_default_target_path : true
-              default_target_path: /dashboard 
+              default_target_path: /dashboard
           logout:       true
           anonymous:    true

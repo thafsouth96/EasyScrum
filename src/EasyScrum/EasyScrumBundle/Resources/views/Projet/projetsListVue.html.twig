@@ -1,8 +1,9 @@
 
-  <div>
-    {% for projet in listProjets %}
-      <p>{{ projet.nom }}</p>
-      <p>{{ projet.description }}</p>
 
-    {% endfor %}
+
+  {% for projet in listProjets %}
+  <div id="projetLine">
+    <div id="projetNom">{{ projet.nom }}</div>
+    <div id="projetRecap">{{ projet.description }}</div>
   </div>
+  {% endfor %}

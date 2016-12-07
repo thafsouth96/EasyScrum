@@ -1,0 +1,51 @@
+<div class="filtreAffichage">
+
+        <!-- #http://www.opentuto.com/les-icones-bootstrap-3/ -->
+        <!-- #http://fontawesome.io/icons/ -->
+
+      <span id="listAffichage" class="fa fa-th-list fa-3x"></span>
+      <span id ="blockAffichage" class="fa fa-th fa-3x"></span>
+      <div id= "filtre" class="dropdown">
+        <button class="btn btn-default dropdown-toggle" type="button" id="filtreButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+          Dropdown
+          <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="filtreButton">
+          <li><a href="#">Action</a></li>
+          <li><a href="#">Another action</a></li>
+          <li><a href="#">Something else here</a></li>
+          <li role="separator" class="divider"></li>
+          <li><a href="#">Separated link</a></li>
+        </ul>
+      </div>
+
+      <div id="trie" class = "dropdown">
+        <button class="btn btn-default dropdown-toggle" type="button" id="trieButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" >
+          Dropdown
+          <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="trieButton">
+          <li><a href="#">Action</a></li>
+          <li><a href="#">Another action</a></li>
+          <li><a href="#">Something else here</a></li>
+          <li role="separator" class="divider"></li>
+          <li><a href="#">Separated link</a></li>
+        </ul>
+      </div>
+
+      <div id ="plusCreate" >
+       <i class="fa fa-plus-square-o fa-3x" aria-hidden="true"></i>
+     </div>
+
+
+</div>
+
+
+  <div id="projects">
+    {% for projet in listProjets %}
+    <div id="projetBlock" class="well">
+      <div class="well" id="projetNom">{{ projet.nom }}</div>
+      <div id="projetRecap">{{ projet.description }}</div>
+    </div>
+    {% endfor %}
+  </div>

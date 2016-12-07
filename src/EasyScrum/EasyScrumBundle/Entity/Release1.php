@@ -13,16 +13,9 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Release1
 {
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    private $id;
 
     /**
+      *@ORM\Id
       * @ORM\Column(name="nom" , type="string")
       */
     private $nom;
@@ -49,7 +42,8 @@ class Release1
     private $dateLivraisonR ;
 
     /**
-      * @ORM\ManyToOne(targetEntity="EasyScrum\EasyScrumBundle\Entity\Projet")
+      * @ORM\ManyToOne(targetEntity="EasyScrum\EasyScrumBundle\Entity\Projet", inversedBy="releases")
+      * @ORM\JoinColumn(name="release_projet", referencedColumnName="nom")
       */
 
     private $projet ;

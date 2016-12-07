@@ -27,9 +27,21 @@ class Sprint
      *
      * @return int
      */
+     /**
+       * @ORM\ManyToOne(targetEntity="EasyScrum\EasyScrumBundle\Entity\Projet", inversedBy="sprints", cascade={"remove"})
+       * @ORM\JoinColumn(name="sprint_projet", referencedColumnName="nom")
+       */
+     private $projet ;
+
+
     public function getId()
     {
         return $this->id;
     }
+    public function getProjet(){
+      return $this->projet ;
+    }
+    public function setProjet(Projet $projet){
+      return $this->projet = $projet ;
+    }
 }
-
