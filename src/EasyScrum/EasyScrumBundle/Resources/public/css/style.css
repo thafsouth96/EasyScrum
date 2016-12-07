@@ -411,17 +411,17 @@ body{
   margin : 8px ;
 }
 
-#projects{
+#projects, #equipes{
   clear : both;
   border : 1px solid red ;
-  height: 893px; 
+  height: 893px;
 }
 #trieButton, #filtreButton{
   background-color: #e6ac00 ;
   color : white;
   font-weight: bold;
 }
-#projetBlock{
+#projetBlock, #equipeBlock{
   /*border: 1px solid black ;*/
   width : 200px ;
   height: 200px ;
@@ -429,13 +429,13 @@ body{
   margin : 20px ;
   padding:0px;
 }
-#projetNom {
+#projetNom, #equipeNom {
   padding: 8px ;
   background-color: #FFC230 ;
   height: 40px;
 
 }
-#plusCreate{
+#plusCreateProjet, #plusCreateEquipe{
   float : left ;
   margin-left : 8px ;
   margin-top: 3px;
@@ -465,4 +465,12 @@ body{
   width:120px ;
 
 
+}
+
+/* Connexion et inscription la div est présente dans login.html.twig et register_content.html.twig
+  TODO ==> Mettre deux div différentes séparement afin de bien adapter le css
+  TODO ==> Copier le css présent dans login.html.twig dans ce fichier
+*/
+#divContent{
+    margin : 80px ;
 }

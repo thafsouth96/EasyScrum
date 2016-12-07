@@ -4,13 +4,14 @@ namespace EasyScrum\EasyScrumBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+use FOS\UserBundle\Model\Group as BaseGroup;
 /**
  * Team
  *
  * @ORM\Table(name="team")
  * @ORM\Entity(repositoryClass="EasyScrum\EasyScrumBundle\Repository\TeamRepository")
  */
-class Team
+class Team extends BaseGroup
 {
     /**
      * @var int
@@ -19,37 +20,25 @@ class Team
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="nom", type="string", length=255, unique=true)
-     */
-    private $nom;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="fonction", type="string", length=255)
-     */
-    private $fonction;
+    protected $id;
 
     /**
       *@ORM\OneToMany(targetEntity="EasyScrum\EasyScrumBundle\Entity\Projet", mappedBy="team")
       *@ORM\JoinColumn(name="team_projet", referencedColumnName="nom")
       */
-    private $projets;
+    protected $projets;
+
+    /**
+      *@ORM\ManyToMany(targetEntity="EasyScrum\EasyScrumBundle\Entity\User", mappedBy="teams")
+      */
+    protected $users ;
 
     public function __construct()
     {
       $this->projets = new ArrayCollection() ;
     }
 
-    /**
-      *@ORM\ManyToMany(targetEntity="EasyScrum\EasyScrumBundle\Entity\User", mappedBy="teams")
-      */
-    private $users ;
+
 
     /**
      * Get id

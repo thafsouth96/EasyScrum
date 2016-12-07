@@ -23,7 +23,16 @@ class User extends BaseUser
       *@ORM\OneToMany(targetEntity="EasyScrum\EasyScrumBundle\Entity\Projet", mappedBy="productOwner")
       *@ORM\JoinColumn(name="owner_projet", referencedColumnName="nom")
       */
-      private $projets;
+      protected $projets;
+
+      /**
+        * @ORM\ManyToMany(targetEntity="EasyScrum\EasyScrumBundle\Entity\Team", inversedBy="users")
+        * @ORM\JoinTable(name="user_team",
+        *      joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")},
+        *      inverseJoinColumns={@ORM\JoinColumn(name="team_id", referencedColumnName="id")}
+        * )
+        */
+   protected $teams;
 
     public function __construct()
     {
@@ -43,6 +52,18 @@ class User extends BaseUser
     }
     public function removeProjet(Projet $projet){
       $this->projets->removeElement($projet);
+    }
+
+    public function getTeams(){
+       return $this->teams;
+    }
+    public function addTeam(Team $team){
+
+       $this->teams[] = $team;
+      return $this ;
+    }
+    public function removeTeam(Team $team){
+      $this->teams->removeElement($team);
     }
 
 

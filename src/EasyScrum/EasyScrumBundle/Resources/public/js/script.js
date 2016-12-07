@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-
+  //Modifier le href
   $('#connexion').click(function(){
       $(location).attr('href','http://localhost/Symfony/web/app_dev.php/login');
   });
@@ -15,6 +15,7 @@ $(document).ready(function(){
   });
 
   $("#personnesClick").click(function(){
+    $('#content').load(urlEquipeList);
     $('#menuVertical ul li a').removeClass("active");
     $(this).addClass("active");
   });
@@ -67,13 +68,25 @@ $(document).ready(function(){
    });
  });
 
- $("#content").on('click', '#plusCreate', function(){
+ $("#content").on('click', '#plusCreateProjet', function(){
 
    $.ajax({
      type : "POST",
      url: urlCreateProject,
      success: function(){
        $("#content").load(urlCreateProject);
+
+     }
+   });
+ });
+
+ $("#content").on('click', '#plusCreateEquipe', function(){
+
+   $.ajax({
+     type : "POST",
+     url: urlCreateEquipe,
+     success: function(){
+       $("#content").load(urlCreateEquipe);
 
      }
    });

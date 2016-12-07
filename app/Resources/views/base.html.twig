@@ -8,6 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="favicon.ico">
+      <link rel="stylesheet" href= {{ asset('bundles/easyscrumeasyscrum/css/style.css') }}>
     {% block stylesheets %}{% endblock %}
 
     <title>{% block title %}{% endblock %}</title>
@@ -27,7 +28,7 @@
 
 <body>
 
-<div class="container">
+<div>
     {% block content %}{% endblock %}
 </div>
 
