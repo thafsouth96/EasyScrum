@@ -1,134 +1,51 @@
 <?php
+// src/AppBundle/Entity/Group.php
 
 namespace EasyScrum\EasyScrumBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
-use Doctrine\Common\Collections\ArrayCollection;
 use FOS\UserBundle\Model\Group as BaseGroup;
+use Doctrine\ORM\Mapping as ORM;
+
 /**
- * Team
- *
- * @ORM\Table(name="team")
- * @ORM\Entity(repositoryClass="EasyScrum\EasyScrumBundle\Repository\TeamRepository")
+ * @ORM\Entity
+ * @ORM\Table(name="fos_group")
  */
 class Team extends BaseGroup
 {
     /**
-     * @var int
-     *
-     * @ORM\Column(name="id", type="integer")
      * @ORM\Id
+     * @ORM\Column(type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    protected $id;
+     protected $id;
 
     /**
-      *@ORM\OneToMany(targetEntity="EasyScrum\EasyScrumBundle\Entity\Projet", mappedBy="team")
-      *@ORM\JoinColumn(name="team_projet", referencedColumnName="nom")
-      */
-    protected $projets;
-
-    /**
-      *@ORM\ManyToMany(targetEntity="EasyScrum\EasyScrumBundle\Entity\User", mappedBy="teams")
-      */
-    protected $users ;
-
-    public function __construct()
-    {
-      $this->projets = new ArrayCollection() ;
-    }
-
-
-
-    /**
-     * Get id
-     *
-     * @return int
+     *@ORM\ManyToOne(targetEntity="EasyScrum\EasyScrumBundle\Entity\User", inversedBy="myTeams",  cascade={"ALL"})
      */
-    public function getId()
-    {
-        return $this->id;
-    }
+     protected $admin ;
 
     /**
-     * Set nom
-     *
-     * @param string $nom
-     *
-     * @return Team
-     */
-    public function setNom($nom)
-    {
-        $this->nom = $nom;
+    * @ORM\ManyToMany(targetEntity="EasyScrum\EasyScrumBundle\Entity\User", mappedBy="teams")
+    * )
+    */
+    protected $users;
 
-        return $this;
-    }
+     public function getAdmin(){
+       return $this->admin ;
+     }
+     public function setAdmin(User $admin){
+       $this->admin = $admin ;
+     }
 
-    /**
-     * Get nom
-     *
-     * @return string
-     */
-    public function getNom()
-    {
-        return $this->nom;
-    }
+     public function getUsers(){
+       return $this->users ;
+     }
 
-
-    /**
-     * Set fonction
-     *
-     * @param string $fonction
-     *
-     * @return Team
-     */
-    public function setFonction($fonction)
-    {
-        $this->fonction = $fonction;
-
-        return $this;
-    }
-
-    /**
-     * Get fonction
-     *
-     * @return string
-     */
-    public function getFonction()
-    {
-        return $this->fonction;
-    }
-
-    public function getProjets(){
-      return $this->projets ;
-    }
-
-    public function addProjet(Projet $projet)
-    {
-      $this->projets[] = $projet;
-
-      return $this;
-    }
-
-  public function removeProjet(Projet $projet)
-  {
-    $this->projets->removeElement($projet);
-  }
-
-  public function getUsers(){
-    return $this->users ;
-  }
-
-  public function addUser(User $user)
-  {
-    $this->users[] = $user;
-
-    return $this;
-  }
-
-public function removeUser(User $user)
-{
-  $this->users->removeElement($user);
-}
-
+     public function addUser(User $user){
+       $this->users[] = $user;
+       return $this ;
+     }
+     public function removeUser(User $user){
+       $this->users->removeElement($user) ;
+     }
 }

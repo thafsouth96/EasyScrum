@@ -10,4 +10,18 @@ namespace EasyScrum\EasyScrumBundle\Repository;
  */
 class ProjetRepository extends \Doctrine\ORM\EntityRepository
 {
+  public function findProjectByName($name){
+    $queryBuilder = $this->createQueryBuilder('p')
+                  ->where('p.nom = :name')
+                  ->setParameter('name', $name) ;
+    return $queryBuilder->getQuery()->getResult()[0] ;
+  }
+  public function findProjectsByUser($user){
+
+    $queryBuilder = $this->createQueryBuilder('p')
+                  ->where('p.productOwner = :user')
+                  ->setParameter('user' , $user);
+    return $queryBuilder->getQuery()->getResult();
+
+  }
 }

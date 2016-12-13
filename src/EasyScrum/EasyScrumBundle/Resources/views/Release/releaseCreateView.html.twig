@@ -1,0 +1,16 @@
+<div class="panel panel-warning" id="formCreateRelease">
+
+  <div class="panel-heading" id = "titleCreateRelease">Créer une Release </div>
+
+
+    <form method="POST" action="{{path('release_create')}}">
+      <div class="panel-body" id="formCreateReleaseContent">
+      {{form_start(form)}}
+        {{ form_widget(form)}}
+        <input type="submit" value="Créer" class="btn btn-warning" id="createBtn" />
+
+      {{ form_end(form) }}
+      </div>
+  </form>
+
+</div>

@@ -11,11 +11,20 @@ show_projets:
 show_projets_list:
   path: /dashboard/projets/list
   defaults: { _controller: EasyScrumEasyScrumBundle:Projet:showProjectsList }
+
 project_create:
   path: /dashboard/createProject
-  defaults: { _controller: EasyScrumEasyScrumBundle:Projet:Create}
-project_view:
-  path: /dashboard/projets/{id}
-  defaults: { _controller: EasyScrumEasyScrumBundle:Projet:projetView }
-  requirements:
-    id : \d+
+  defaults: { _controller: EasyScrumEasyScrumBundle:Projet:create }
+
+
+project_edit:
+  path: /dashboard/projets/{name}/edit
+  defaults: { _controller: EasyScrumEasyScrumBundle:Projet:editProject }
+
+project_view :
+  path: /dashboard/projets/{name}
+  defaults: { _controller: EasyScrumEasyScrumBundle:Projet:showProject }
+
+release_create:
+    path: /dashboard/releases/createRelease
+    defaults: { _controller: EasyScrumEasyScrumBundle:Release:create }
