@@ -21,6 +21,20 @@ class Task
      */
     private $id;
 
+    /**
+      * @ORM\ManyToOne(targetEntity="EasyScrum\EasyScrumBundle\Entity\UserStory", inversedBy="tasks")
+      *
+      */
+    private $userStory ;
+
+    /** une tache a un repsonsable
+      * @ORM\ManyToOne(targetEntity="EasyScrum\EasyScrumBundle\Entity\User", inversedBy="tasks")
+      * @ORM\JoinColumn(name="responsable_id")
+      *
+      * })
+      */
+    private $responsable;
+
 
     /**
      * Get id
@@ -32,4 +46,3 @@ class Task
         return $this->id;
     }
 }
-

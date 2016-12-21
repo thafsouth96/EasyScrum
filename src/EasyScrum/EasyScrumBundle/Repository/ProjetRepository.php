@@ -14,7 +14,13 @@ class ProjetRepository extends \Doctrine\ORM\EntityRepository
     $queryBuilder = $this->createQueryBuilder('p')
                   ->where('p.nom = :name')
                   ->setParameter('name', $name) ;
-    return $queryBuilder->getQuery()->getResult()[0] ;
+    return $queryBuilder->getQuery()->getResult() ;
+  }
+  public function findProjectById($id){
+    $queryBuilder = $this->createQueryBuilder('p')
+                  ->where('p.id = :id')
+                  ->setParameter('id', $id) ;
+    return $queryBuilder->getQuery()->getResult() ;
   }
   public function findProjectsByUser($user){
 
@@ -22,6 +28,15 @@ class ProjetRepository extends \Doctrine\ORM\EntityRepository
                   ->where('p.productOwner = :user')
                   ->setParameter('user' , $user);
     return $queryBuilder->getQuery()->getResult();
+
+  }
+  public function findProjectByName_user($user, $nom){
+    $queryBuilder = $this->createQueryBuilder('p')
+                    ->where('p.productOwner = :user')
+                    ->setParameter('user', $user)
+                    ->andWhere('p.nom = :nom')
+                    ->setParameter('nom' , $nom);
+    return $queryBuilder->getQuery()->getOneOrNullResult();
 
   }
 }

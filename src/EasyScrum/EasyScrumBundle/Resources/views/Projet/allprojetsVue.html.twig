@@ -33,19 +33,20 @@
         </ul>
       </div>
 
-      <div id ="plusCreateProjet" >
-       <i class="fa fa-plus-square-o fa-3x" aria-hidden="true"></i>
-     </div>
+      
+       <button  id ="plusCreateProjet" class="fa fa-plus-square-o fa-3x" data-toggle="modal" data-target="#modelCreateProject" aria-hidden="true"></button>
 
+     {{ render(controller('EasyScrumEasyScrumBundle:Projet:create')) }}
 
 </div>
 
 
   <div id="projects">
-    {% for projet in listProjets %}
+    {% for projet in allProjets %}
     <div id="projetBlock" class="well">
       <div class="well" id="projetNom">{{ projet.nom }}</div>
       <div id="projetRecap">{{ projet.description }}</div>
+      <div class="hidden_url">{{ path('project_view', {'id' : projet.id}) }}</div>
     </div>
     {% endfor %}
   </div>

@@ -3,14 +3,14 @@
 
 namespace EasyScrum\EasyScrumBundle\Entity;
 
-use FOS\UserBundle\Model\Group as BaseGroup;
+
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity
- * @ORM\Table(name="fos_group")
+ * @ORM\Table(name="team")
+ *@ORM\Entity(repositoryClass="EasyScrum\EasyScrumBundle\Repository\TeamRepository")
  */
-class Team extends BaseGroup
+class Team
 {
     /**
      * @ORM\Id
@@ -18,6 +18,18 @@ class Team extends BaseGroup
      * @ORM\GeneratedValue(strategy="AUTO")
      */
      protected $id;
+
+
+
+     /**
+      * @ORM\Column(type="string", nullable=false)
+      */
+    protected $nom;
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+   protected $description;
 
     /**
      *@ORM\ManyToOne(targetEntity="EasyScrum\EasyScrumBundle\Entity\User", inversedBy="myTeams",  cascade={"ALL"})
@@ -29,6 +41,32 @@ class Team extends BaseGroup
     * )
     */
     protected $users;
+
+    /** Une équipe peut gérer plusieurs projets ==> Many teams have Many projects
+      * @ORM\ManyToMany(targetEntity="EasyScrum\EasyScrumBundle\Entity\Projet", mappedBy="teams")
+      */
+    protected $projets;
+
+    /** une team gère plusieurs teams
+     *@ORM\OneToMany(targetEntity="EasyScrum\EasyScrumBundle\Entity\Sprint", mappedBy="teamResponsable")
+     *
+     */
+     private $sprints;
+
+     public function getNom(){
+       return $this->nom ;
+     }
+     public function setNom($nom){
+       $this->nom = $nom ;
+       return $this ;
+     }
+     public function setDescription($description){
+       $this->description = $description;
+       return $this;
+     }
+     public function getDescription(){
+      return $this->description ;
+     }
 
      public function getAdmin(){
        return $this->admin ;

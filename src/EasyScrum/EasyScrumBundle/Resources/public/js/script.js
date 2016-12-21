@@ -15,7 +15,7 @@ $(document).ready(function(){
   });
 
   $("#personnesClick").click(function(){
-    $('#content').load(urlEquipeList);
+    $("content").load(urlProjets);
     $('#menuVertical ul li a').removeClass("active");
     $(this).addClass("active");
   });
@@ -74,7 +74,7 @@ $(document).ready(function(){
      type : "POST",
      url: urlCreateProject,
      success: function(){
-       $("#content").load(urlCreateProject);
+       //$("#content").load(urlCreateProject);
 
      }
    });
@@ -84,15 +84,14 @@ $(document).ready(function(){
 
    $.ajax({
      type : "POST",
-     url: urlCreateEquipe,
      success: function(){
-       $("#content").load(urlCreateEquipe);
+       //$("#content").load(urlCreateEquipe);
 
      }
    });
  });
 
- $("#projects").on('click','#listAffichage', function(){
+ $("#content").on('click','#listAffichage', function(){
     //$("#content").load(urlProjetsList);
     //alert("coucou je fonctionne ") ;
  });
@@ -111,5 +110,23 @@ $(document).ready(function(){
      }
    });
  });*/
+
+ /* Affichage des releases en colonne onclick sur une div d'un projet*/
+
+ $("#content").on('click','#projetBlock',function(){
+   urlReleases = $(this).children('.hidden_url').text();
+    /*projectName = $('#projetNom').text();
+    alert(projectName) ;*/
+    $.ajax({
+      method : "POST",
+      url : urlReleases,
+      success: function(){
+        $("#content").load(urlReleases);
+      }
+
+    });
+    //$("#content").load(urlReleases);
+ });
+
 
 });

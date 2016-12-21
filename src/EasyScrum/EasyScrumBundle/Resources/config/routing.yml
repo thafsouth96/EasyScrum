@@ -22,9 +22,14 @@ project_edit:
   defaults: { _controller: EasyScrumEasyScrumBundle:Projet:editProject }
 
 project_view :
-  path: /dashboard/projets/{name}
+  path: /dashboard/projets/{id}
   defaults: { _controller: EasyScrumEasyScrumBundle:Projet:showProject }
+
 
 release_create:
     path: /dashboard/releases/createRelease
     defaults: { _controller: EasyScrumEasyScrumBundle:Release:create }
+
+team_create:
+    path: /dashboard/teams/createTeam
+    defaults: { _controller: EasyScrumEasyScrumBundle:Team:create }

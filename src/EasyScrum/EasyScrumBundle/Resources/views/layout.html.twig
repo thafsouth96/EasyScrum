@@ -5,7 +5,7 @@
   <title>{% block title %}EasyScrum {% endblock%} </title>
   <link rel="stylesheet" href= {{ asset('bundles/easyscrumeasyscrum/css/style.css') }}>
   <script src=  {{ asset('bundles/easyscrumeasyscrum/js/jquery-3.1.1.min.js') }} ></script>
-  <script src=  {{ asset('bundles/easyscrumeasyscrum/js/script.js') }}  ></script>
+
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
 </head>
@@ -71,14 +71,14 @@
   <div id="menuVertical">
       <ul>
         <li><a id="projetsClick"><img class='imageMenu' src= {{ asset('bundles/easyscrumeasyscrum/images/projetIcon.png')}} alt="projetIcon"><p class="texteMenu">Projets</p></a></li>
-        <li><a id="personnesClick" href="#Team"><img class='imageMenu' src= {{ asset('bundles/easyscrumeasyscrum/images/peopleIcon.png')}} alt="peopleIcon"><p class="texteMenu">Equipes</p></a></li>
-        <li><a id="codeClick" href="#Code"><img class='imageMenu' src= {{ asset('bundles/easyscrumeasyscrum/images/gitIcon.png')}} alt="gitIcon"><p class="texteMenu">Dépôt Code</p></a></li>
-        <li><a id="docClick" href="#Doc"><img class='imageMenu' src= {{ asset('bundles/easyscrumeasyscrum/images/docIcon.png')}} alt="docIcon"><p class="texteMenu">Documents</p></a></li>
-        <li><a id="timeClick" href="#TimeSheet"><img class='imageMenu' src= {{ asset('bundles/easyscrumeasyscrum/images/timesheetIcon.png')}} alt="timesheetIcon"><p class="texteMenu">Timesheet</p></a></li>
-        <li><a id="forumClick" href="#Forum"><img class='imageMenu' src= {{ asset('bundles/easyscrumeasyscrum/images/ForumIcon.png')}} alt="forumIcon"><p class="texteMenu">Forum</p></a></li>
-        <li><a id="calendrierClick" href="#Calendrier"><img class='imageMenu' src= {{ asset('bundles/easyscrumeasyscrum/images/calendarIcon.png')}} alt="calendarIcon"><p class="texteMenu">Calendrier</p></a></li>
-        <li><a id="trackClick" href="#Trackers"><img class='imageMenu' src= {{ asset('bundles/easyscrumeasyscrum/images/trackIcon1.png')}} alt="trackIcon"><p class="texteMenu">Trackers</p></a></li>
-        <li><a id= "paramClick" href="#Paramètres"><img class='imageMenu' src= {{ asset('bundles/easyscrumeasyscrum/images/settingsIcon.png')}} alt="settingsIcon"><p class="texteMenu">Paramètres</p></a></li>
+        <li><a id="personnesClick" ><img class='imageMenu' src= {{ asset('bundles/easyscrumeasyscrum/images/peopleIcon.png')}} alt="peopleIcon"><p class="texteMenu">Equipes</p></a></li>
+        <li><a id="codeClick"><img class='imageMenu' src= {{ asset('bundles/easyscrumeasyscrum/images/gitIcon.png')}} alt="gitIcon"><p class="texteMenu">Dépôt Code</p></a></li>
+        <li><a id="docClick"><img class='imageMenu' src= {{ asset('bundles/easyscrumeasyscrum/images/docIcon.png')}} alt="docIcon"><p class="texteMenu">Documents</p></a></li>
+        <li><a id="timeClick"><img class='imageMenu' src= {{ asset('bundles/easyscrumeasyscrum/images/timesheetIcon.png')}} alt="timesheetIcon"><p class="texteMenu">Timesheet</p></a></li>
+        <li><a id="forumClick"><img class='imageMenu' src= {{ asset('bundles/easyscrumeasyscrum/images/ForumIcon.png')}} alt="forumIcon"><p class="texteMenu">Forum</p></a></li>
+        <li><a id="calendrierClick"><img class='imageMenu' src= {{ asset('bundles/easyscrumeasyscrum/images/calendarIcon.png')}} alt="calendarIcon"><p class="texteMenu">Calendrier</p></a></li>
+        <li><a id="trackClick"><img class='imageMenu' src= {{ asset('bundles/easyscrumeasyscrum/images/trackIcon1.png')}} alt="trackIcon"><p class="texteMenu">Trackers</p></a></li>
+        <li><a id= "paramClick"><img class='imageMenu' src= {{ asset('bundles/easyscrumeasyscrum/images/settingsIcon.png')}} alt="settingsIcon"><p class="texteMenu">Paramètres</p></a></li>
       </ul>
   </div>
   </div>
@@ -111,10 +111,11 @@
     urlCreateProject = ('{{path("project_create")}}');
     urlProjets = ('{{path("show_projets")}}');
     urlProjetsList= ('{{ path("show_projets_list")}}');
-    urlEquipeList = ('{{ path("fos_user_group_list")}}');
-    urlCreateEquipe = ('{{ path ("fos_user_group_new")}}') ; 
-</script>
+    //{#urlEquipeList = ('{{ path("fos_user_group_list")}}');#}
+  //  {#urlCreateEquipe = ('{{ path ("fos_user_group_new")}}') ;#}
 
+</script>
+<script src=  {{ asset('bundles/easyscrumeasyscrum/js/script.js') }}  ></script>
 </footer>
 </body>
 {% else %}

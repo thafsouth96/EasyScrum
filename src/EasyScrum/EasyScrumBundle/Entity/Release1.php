@@ -15,7 +15,14 @@ class Release1
 {
 
       /**
-        * @ORM\Id
+      * @ORM\Id
+      * @ORM\Column(type="integer")
+      * @ORM\GeneratedValue(strategy="AUTO")
+      */
+      protected $id;
+      
+      /**
+        *
         * @ORM\Column(name="nom", type="string")
         */
       private $nom;
@@ -49,6 +56,12 @@ class Release1
       */
 
     private $projet ;
+
+    /**
+     *@ORM\OneToMany(targetEntity="EasyScrum\EasyScrumBundle\Entity\Sprint", mappedBy="release")
+     *
+     */
+     private $sprints; // Type = ArrayCollection
 
     public function __construct(){
 

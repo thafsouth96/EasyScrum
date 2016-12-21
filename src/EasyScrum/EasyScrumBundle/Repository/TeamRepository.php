@@ -10,4 +10,13 @@ namespace EasyScrum\EasyScrumBundle\Repository;
  */
 class TeamRepository extends \Doctrine\ORM\EntityRepository
 {
+  public function findTeamByNom_admin($admin, $nom){
+    $queryBuilder = $this->createQueryBuilder('t')
+                    ->where('t.admin = :admin')
+                    ->setParameter('admin', $admin)
+                    ->andWhere('t.nom = :nom')
+                    ->setParameter('nom' , $nom);
+    return $queryBuilder->getQuery()->getOneOrNullResult();
+
+  }
 }

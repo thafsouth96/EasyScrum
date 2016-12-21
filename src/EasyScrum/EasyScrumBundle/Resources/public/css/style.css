@@ -322,6 +322,12 @@ body{
 
 #projetsClick {
   margin-top : 40px;
+  cursor: pointer;
+}
+
+#projetsClick, #personnesClick, #codeClick, #docClick, #timeClick, #forumClick, #calendrierClick, #trackClick, #paramClick
+{
+  cursor: pointer;
 }
 /********* End Menu Vertical *******/
 #menuContent{
@@ -428,13 +434,17 @@ body{
   float: left  ;
   margin : 20px ;
   padding:0px;
+  cursor: pointer;
 }
 #projetNom, #equipeNom {
   padding: 8px ;
   background-color: #FFC230 ;
   height: 40px;
-
 }
+.hidden_url{
+  visibility: hidden;
+}
+
 #plusCreateProjet, #plusCreateEquipe{
   float : left ;
   margin-left : 8px ;

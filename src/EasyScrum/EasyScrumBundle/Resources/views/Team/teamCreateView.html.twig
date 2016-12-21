@@ -1,0 +1,16 @@
+<div class="panel panel-warning" id="formCreateTeam">
+
+  <div class="panel-heading" id = "titleCreateTeam">Créer une Team </div>
+
+
+    <form method="POST" action="{{path('team_create')}}">
+      <div class="panel-body" id="formCreateTeamContent">
+      {{form_start(form)}}
+        {{ form_widget(form)}}
+        <input type="submit" value="Créer" class="btn btn-warning" id="createBtn" />
+
+      {{ form_end(form) }}
+      </div>
+  </form>
+
+</div>

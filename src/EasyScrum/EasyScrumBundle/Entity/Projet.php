@@ -26,7 +26,7 @@ class Projet
     /**
      * @var string
      *
-     * @ORM\Column(name="nom", type="string", length=255, unique=true)
+     * @ORM\Column(name="nom", type="string", length=255)
      */
     private $nom;
     /**
@@ -71,17 +71,40 @@ class Projet
       */
       private $releases; // Type = ArrayCollection
 
-    /**
-      *@ORM\OneToOne(targetEntity="EasyScrum\EasyScrumBundle\Entity\Product_Backlog", cascade={"persist"})
-      *
-      */
-      private $product_backlog ;
+      /**
+       *@ORM\OneToMany(targetEntity="EasyScrum\EasyScrumBundle\Entity\Sprint", mappedBy="projet")
+       *
+       */
+       private $sprints; // Type = ArrayCollection
 
     /**
-      * @ManyToOne(targetEntity="EasyScrum\EasyScrumBundle\Entity\User", inversedBy="projets", cascade={"ALL"})
+      *@ORM\OneToOne(targetEntity="EasyScrum\EasyScrumBundle\Entity\Product_Backlog", inversedBy="projet")
+      *
+      */
+      private $backlog ;
+
+    /** un projet a un seul product Owner
+      * @ManyToOne(targetEntity="EasyScrum\EasyScrumBundle\Entity\User", inversedBy="mesProjets", cascade={"ALL"})
       *
       **/
       private $productOwner ;
+
+      /** un projet peut avoir plusieurs team ==> Many project have many teams
+      * @ORM\ManyToMany(targetEntity="EasyScrum\EasyScrumBundle\Entity\Team", inversedBy="projets")
+      * @ORM\JoinTable(name="projets_teams")
+      */
+      private $teams;
+
+      /** un projet peut avoir plusieurs collaborateurs non liés à une équipe
+       * @ORM\ManyToMany(targetEntity="EasyScrum\EasyScrumBundle\Entity\User", mappedBy="projets")
+       * @ORM\JoinTable(name="projets_users")
+       */
+       private $collaborateurs ;
+
+
+
+
+
       public function __construct(){
         $this->dateDebut = null ;
         $this->dateFin = null ;

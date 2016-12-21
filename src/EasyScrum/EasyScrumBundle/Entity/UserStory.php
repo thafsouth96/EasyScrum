@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * UserStory
  *
- * @ORM\Table(name="user_story")
+ * @ORM\Table(name="userStory")
  * @ORM\Entity(repositoryClass="EasyScrum\EasyScrumBundle\Repository\UserStoryRepository")
  */
 class UserStory
@@ -21,6 +21,19 @@ class UserStory
      */
     private $id;
 
+    /**
+      * @ORM\ManyToOne(targetEntity="EasyScrum\EasyScrumBundle\Entity\Sprint", inversedBy="userStories")
+      * @ORM\JoinColumn(name="sprint_id")
+      *
+      * })
+      */
+    private $sprint;
+
+    /**
+     *@ORM\OneToMany(targetEntity="EasyScrum\EasyScrumBundle\Entity\Task", mappedBy="userStory")
+     *
+     */
+   private $tasks;
 
     /**
      * Get id
@@ -32,4 +45,3 @@ class UserStory
         return $this->id;
     }
 }
-

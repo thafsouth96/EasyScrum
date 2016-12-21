@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Product_Backlog
  *
- * @ORM\Table(name="product__backlog")
+ * @ORM\Table(name="backlog")
  * @ORM\Entity(repositoryClass="EasyScrum\EasyScrumBundle\Repository\Product_BacklogRepository")
  */
 class Product_Backlog
@@ -21,6 +21,10 @@ class Product_Backlog
      */
     private $id;
 
+    /**
+      * @ORM\OneToOne(targetEntity="EasyScrum\EasyScrumBundle\Entity\Projet", mappedBy="backlog")
+      */
+    private $projet; 
 
     /**
      * Get id
@@ -32,4 +36,3 @@ class Product_Backlog
         return $this->id;
     }
 }
-
