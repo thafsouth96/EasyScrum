@@ -56,6 +56,12 @@ class User extends BaseUser
         */
         protected $tasks ;
 
+        /**
+          * @ORM\ManyToMany(targetEntity="EasyScrum\EasyScrumBundle\Entity\User")
+          */
+
+        protected $usersFriends;
+
     public function __construct()
     {
         parent::__construct();
@@ -84,11 +90,11 @@ class User extends BaseUser
        return $this->mesProjets ;
     }
 
-    public function addMonProjet(Projet $projet){
+    public function addMonProjet($projet){
        $this->mesProjets[] = $projet;
       return $this ;
     }
-    public function removeMonProjet(Projet $projet){
+    public function removeMonProjet($projet){
       $this->mesProjets->removeElement($projet);
     }
 
@@ -96,48 +102,60 @@ class User extends BaseUser
        return $this->projets ;
     }
 
-    public function addProjet(Projet $projet){
+    public function addProjet($projet){
        $this->projets[] = $projet;
       return $this ;
     }
-    public function removeProjet(Projet $projet){
+    public function removeProjet($projet){
       $this->projets->removeElement($projet);
     }
 
     public function getTeams(){
        return $this->teams;
     }
-    public function addTeam(Team $team){
+    public function addTeam($team){
 
        $this->teams[] = $team;
       return $this ;
     }
-    public function removeTeam(Team $team){
+    public function removeTeam($team){
       $this->teams->removeElement($team);
     }
 
     public function getMyTeams(){
-       return $this->MyTeams;
+       return $this->myTeams;
     }
-    public function addMyTeam(Team $team){
+    public function addMyTeam($team){
 
-       $this->MyTeams[] = $team;
+       $this->myTeams[] = $team;
       return $this ;
     }
-    public function removeMyTeam(Team $team){
-      $this->MyTeams->removeElement($team);
+    public function removeMyTeam($team){
+      $this->myTeams->removeElement($team);
     }
 
     public function getTasks(){
        return $this->tasks;
     }
-    public function addTask(Task $task){
+    public function addTask($task){
 
        $this->tasks[] = $task;
       return $this ;
     }
-    public function removeTask(task $task){
+    public function removeTask($task){
       $this->tasks->removeElement($task);
+    }
+
+    public function getFriends(){
+       return $this->usersFriends;
+    }
+    public function addFriend($friend){
+
+       $this->usersFriends[] = $friend;
+      return $this ;
+    }
+    public function removeTfriend($friend){
+      $this->usersFriends->removeElement($friend);
     }
 
 

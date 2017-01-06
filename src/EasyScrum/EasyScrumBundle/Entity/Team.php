@@ -52,7 +52,9 @@ class Team
      *
      */
      private $sprints;
-
+     public function getId(){
+       return $this->id ;
+     }
      public function getNom(){
        return $this->nom ;
      }
@@ -71,7 +73,7 @@ class Team
      public function getAdmin(){
        return $this->admin ;
      }
-     public function setAdmin(User $admin){
+     public function setAdmin($admin){
        $this->admin = $admin ;
      }
 
@@ -79,11 +81,11 @@ class Team
        return $this->users ;
      }
 
-     public function addUser(User $user){
+     public function addUser($user){
        $this->users[] = $user;
        return $this ;
      }
-     public function removeUser(User $user){
+     public function removeUser($user){
        $this->users->removeElement($user) ;
      }
 }

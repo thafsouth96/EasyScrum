@@ -1,4 +1,11 @@
 
+
+
+
+<div id="plusCreateRelease" class="fa fa-plus-square-o fa-3x" data-toggle ="modal" data-target="#modelCreateRelease" aria-hidden="true"></div>
+
+ {{ render(controller('EasyScrumEasyScrumBundle:Release:create')) }}
+
   <div id="releases">
     {% for release in listReleases %}
     <div class="releaseColonne well">

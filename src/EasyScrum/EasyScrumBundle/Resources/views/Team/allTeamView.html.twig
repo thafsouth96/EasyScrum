@@ -1,0 +1,55 @@
+
+<div  id ="plusCreateTeam" class="fa fa-plus-square-o fa-3x" data-toggle="modal" data-target="#modelCreateTeam" aria-hidden="true"></div>
+
+     {{ render(controller('EasyScrumEasyScrumBundle:Team:create')) }}
+
+
+
+<div id="allTeams">
+  <div class="panel-title"><p> Mes équipes </p></div>
+  <div class ="panel panel-warning" id="mesteams">
+    <div class ="panel-body">
+      {% for team in listMesTeams %}
+      <div class="teamBlock">
+        <div class="teamNom">{{ team.nom }}</div>
+        <div class="teamRecap well">{{ team.description }}</div>
+
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  <div class="panel-title">
+    <p> Autres </p>
+  </div>
+  <div class ="panel panel-warning" id="teams">
+    <div class="panel-body">
+      {% for team in teams %}
+      <div class="teamBlock">
+        <div class="teamNom">{{ team.nom }}</div>
+        <div class="teamRecap well">{{ team.description }}</div>
+        <!--div class="hidden_url">{{ path('team_view', {'id' : team.id}) }}</div-->
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+  <div class ="panel-title" id="personnes">
+
+    <div id ="addFriend" class="fa fa-plus-square-o fa-2x" data-toggle="modal" data-target="#modeladdFriend" aria-hidden="true"></div>
+
+       {{ render(controller('EasyScrumEasyScrumBundle:User:addFriend')) }}
+
+    <p>Personnes</p>
+  </div>
+  <div class="panel panel-warning" id="friends">
+    <div class ="panel-body">
+      {% for friend in friends %}
+      <div class="friendsBlock">
+        <div class="friendNom">{{ friend.nom }}</div>
+        <div class="friendRecap well">{{ friend.id }}</div>
+        <!--div class="hidden_url">{{ path('team_view', {'id' : team.id}) }}</div-->
+      </div>
+    {% endfor %}
+    </div>
+  </div>

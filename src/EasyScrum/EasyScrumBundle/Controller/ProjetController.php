@@ -7,6 +7,7 @@ use Doctrine\ORM\EntityRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use EasyScrum\EasyScrumBundle\Entity\Projet;
 use EasyScrum\EasyScrumBundle\Form\CreateProject;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -49,7 +50,12 @@ public function createAction(Request $request){
        if($projetExistant != null )
        {
         // Et le productOwner du projet existant est le meme que l'utilisateur connecté
-           return new Response ('Projet ' . $nom .' Existe');
+
+        $this->addFlash(
+           'error',
+           'Le projet existe déja!'
+         );
+         return $this->redirectToRoute('easy_scrum_dashbord');
         }
 
       // Si le projet n'existe pas ou que le productOwner n'est pas le meme
@@ -61,10 +67,16 @@ public function createAction(Request $request){
         //On enregistre le projet dans la base de données
         $em->persist($projet);
         $em->flush();
+        $this->addFlash(
+           'success',
+           'Le projet est bien créer!'
+       );
+
         // Redirection vers la vue projet "createProject à modifier"
-        // return $this->redirectToRoute('project_create);
-        return new Response('Projet '.$nom. ' Created ! ');
+
+         return $this->redirectToRoute('easy_scrum_dashbord');
       }
+
   }
    return $this->render('EasyScrumEasyScrumBundle:Projet:projetCreateVue.html.twig', array('form' =>$form->createView()));
 }

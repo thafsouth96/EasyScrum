@@ -66,14 +66,14 @@ class Sprint
     public function getProjet(){
       return $this->projet ;
     }
-    public function setProjet(Projet $projet){
+    public function setProjet($projet){
       return $this->projet = $projet ;
     }
 
     public function getRelease(){
       return $this->release ;
     }
-    public function setRelease(Release $release){
+    public function setRelease($release){
       return $this->release = $release ;
     }
 
@@ -84,7 +84,7 @@ class Sprint
       $this->userStories[] = $userStory ;
       return $this ;
     }
-    public function removeUserStory(UserStory $userStory){
+    public function removeUserStory($userStory){
       $this->userStories->removeElement($userStory);
     }
 

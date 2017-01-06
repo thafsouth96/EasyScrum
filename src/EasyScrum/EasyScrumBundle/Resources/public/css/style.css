@@ -6,7 +6,6 @@ body{
   margin:0px;
 }
 
-
 #welcomeDiv{
   border: solid 1px black ;
   margin-left: auto;
@@ -21,12 +20,18 @@ body{
   font-weight: bold ;
   margin-bottom: 40px;
 }
+
+.menuRight{
+  float: right;
+  padding: 5px;
+}
 /*Bouton de connexion */
 #connexion{
   margin-left: 40%;
-  margin-right: 30px;
-  background-color:#3388BB ;
+  margin: 0px 10px;
+  background-color:#e6ac00 ;
   width : 150px;
+  border-radius: 15px;
   height: 30px;
   border : none;
   color : white;
@@ -39,10 +44,11 @@ body{
 }
 /*Bouton d'inscription */
 #inscription{
-  background: #333333 ;
+  background: rgba(0,0,0,0.75) ;
   width : 150px;
   height: 30px;
-  margin-left: 40px;
+  border-radius: 15px;
+  margin: 0px 10px;
   border : none;
   color : white;
   font-size: 16px;
@@ -57,25 +63,34 @@ body{
     margin: 0px;
     background-color : #333333;
     list-style-type : none ;
+    text-transform: uppercase;
+    font-size: 15px;
+    padding: 0px 10%;
+    font-weight: bold;
+}
+
+
+#menu li:hover {
+  -webkit-box-shadow: inset 0px 0px 62px -1px rgba(0,0,0,0.75);
+-moz-box-shadow: inset 0px 0px 62px -1px rgba(0,0,0,0.75);
+box-shadow: inset 0px 0px 62px -1px rgba(0,0,0,0.75);
 }
 #menu li {
-  display: inline-block;
-  width:150px;
-  height: 40px;
-  margin: 0px;
-  padding:0px;
-  border-right: 1px solid #CCCCCC;
-  text-align: center;
-  line-height: 40px ;
+    display: inline-block;
+    width: 13%;
+    height: 40px;
+    margin: 0px;
+    padding: 0px;
+    padding: 0px 30px;
+    border-bottom: 3px solid #e6ac00;
+    text-align: center;
+    line-height: 40px;
 }
 
 #menu li a {
   display: block;
   text-decoration: none;
   color: #FFFFFF;
-}
-#menu li :hover{
-  background-color: #3388BB;
 }
 /* La div fixée */
 .fixNavigation{
@@ -92,44 +107,44 @@ body{
 */
 /* La div qui contient la présentation du produit */
 #presentation {
-  border : solid black 1px ;
+  width: 80%;
+margin: 0 auto;
 }
 /* Avec EasyScrum */
 #presentationTexte
 {
-  margin-left: 20px ;
+    margin: 20px 20px;
   font-size: 20px;
   font-weight: bold ;
 }
 
 /* Planifier et suivre vos projet */
 #gestionProjet {
-  margin-left: 60px;
-  width: 450px;
-  height: 350px;
-  display: inline-block;
+    float: left;
+}
+
+.divsFunction{
+  margin: 1%;
+width: 23%;
+height: 360px;
+background: #3388BB;
+color: white;
+text-align: left;
+font-size: 16px;
+padding: 1%;
 }
 
 /* Rédiger vos rapport */
 #doc {
-
-  width: 450px;
-  height: 350px;
-  display: inline-block;
+  float: left;
 }
 /*Coder en collaboration */
 #code {
-
-  width: 450px;
-  height: 350px;
-  display: inline-block;
+    float: left;
 }
 /*Communiquer et échanger */
 #communication{
-
-  width: 450px;
-  height: 350px;
-  display: inline-block;
+    display: inline-block;
 }
 
 .checkIcon{
@@ -155,22 +170,19 @@ body{
 
 /*la div contenat la video, texte ainsi que le boutton "demo en ligne" */
 #demo {
-  border : 1px solid red;
-
+  width: 80%;
+margin: 0 auto;
 }
 
 /* La div contenant la video de la démo */
 #video {
   margin-top: 20px;
-  margin-left: 60px;
   display: inline-block;
-  border : 2px solid green ;
 }
 /*Texte de la démo */
 #demo p {
 
   display: inline-block;
-  border : 1px solid blue ;
   vertical-align: top ;
   margin-left: 20px;
   margin-top: 80px;
@@ -194,12 +206,20 @@ body{
   border : none ;
 }
 
+
 /* css du footer */
+footer{
+  /*  background-color: #333333;*/
+}
+
 #detailFooter{
   margin-top: 10px;
   background-color: #333333 ;
   color : white ;
   border-bottom: 2px solid #1a1a1a ;
+  width: 80%;
+  margin: 0px 10%;
+  padding: 0;
 }
 #detailFooter img {
   height: 60px;
@@ -209,28 +229,23 @@ body{
 }
 #about{
   border-left: 2px solid #1a1a1a ;
-  width : 32%;
+    padding: 10px;
   height: 200px;
   display: inline-block;
-  padding-top: 10px;
-  padding-left: 6px;
 
 }
 #contactUs{
   border-left: 2px solid #1a1a1a ;
-  width : 32%;
+
   height: 200px;
   display: inline-block;
-  padding-top: 10px;
-  padding-left: 8px;
+      padding: 10px;
 }
 #plan{
   border-left: 2px solid #1a1a1a ;
-  width : 32%;
   height: 200px;
   display: inline-block;
-  padding-top: 10px;
-  padding-left: 8px;
+    padding: 10px;
 }
 .texteFooter {
   vertical-align: top;
@@ -243,7 +258,7 @@ body{
 }
 /* La div des icons des réseaux sociaux et la mention légales */
 #miniFooter{
-  background-color: #333333 ;
+background-color: rgba(25,25,25,1);
   color : white ;
   font-weight: bold;
   text-align: center;
@@ -281,7 +296,8 @@ body{
   height: 950px ;
   margin : 0px;
   padding: 0px;
-/*  border : 1px solid red ;*/
+
+
 }
 
 /* Menu Vertical */
@@ -294,7 +310,6 @@ body{
   float: left;
   margin : 0px ;
   padding: 0px;
-  /*border : 1px solid #b3b3b3 ;*/
   vertical-align: top ;
 }
 #menuVertical ul {
@@ -417,18 +432,19 @@ body{
   margin : 8px ;
 }
 
-#projects, #equipes{
+#projects{
   clear : both;
-  border : 1px solid red ;
   height: 893px;
+  animation-name: animatebottom;
+  animation-duration: 1s
+
 }
 #trieButton, #filtreButton{
   background-color: #e6ac00 ;
   color : white;
   font-weight: bold;
 }
-#projetBlock, #equipeBlock{
-  /*border: 1px solid black ;*/
+#projetBlock{
   width : 200px ;
   height: 200px ;
   float: left  ;
@@ -436,7 +452,7 @@ body{
   padding:0px;
   cursor: pointer;
 }
-#projetNom, #equipeNom {
+#projetNom {
   padding: 8px ;
   background-color: #FFC230 ;
   height: 40px;
@@ -445,36 +461,90 @@ body{
   visibility: hidden;
 }
 
-#plusCreateProjet, #plusCreateEquipe{
+#plusCreateProjet, #plusCreateTeam{
   float : left ;
   margin-left : 8px ;
   margin-top: 3px;
+  margin-bottom: 10px;
+  cursor : pointer;
 
 }
-#formCreateProject {
+
+
+#formCreateProject, #formCreateTeam, #formaddFriend{
 
   margin : 40px;
 
 }
-#titleCreateProject {
+#titleCreateProject, #titleCreateTeam, #titleaddFriend{
 
   background-color: #FFC230
 
 }
 
-#formCreateProjectContent{
+
+
+#formCreateProjectContent, #formCreateTeamContent , #formaddFriendContent{
   margin-right: 10px ;
   margin-top: 0px;
 }
-#formCreateProjectContent input, #formCreateProjectContent label {
+#formCreateProjectContent input, #formCreateProjectContent label, #formCreateTeamContent label, #formCreateTeamContent input, #formaddFriendContent input, #formaddFriendContent label {
   margin : 10px;
   margin-left: 0px ;
 }
-#createBtn{
+#createBtn, #searchBtn{
   float : right ;
   width:120px ;
+  margin : 10px;
 
 
+}
+
+#mesteams, #teams{
+  height: 390px;
+
+  overflow: auto;
+
+}
+.panel-body{
+
+}
+#allTeams{
+  width : 57% ;
+  float: left;
+  clear: both;
+  height: 750px ;
+  margin-left: 10px ;
+  margin-right:10px ;
+}
+#friends {
+
+  float: left;
+  width : 40%;
+  height: 840px;
+}
+.panel-title{
+  border : #FFC230 ;
+  height: 40px;
+  border-radius: 2px;
+  background-color: #FFC230 ;
+}
+.panel-title p {
+  padding: 10px ;
+  font-weight: bold;
+
+}
+#personnes{
+  float: left;
+  width : 40%;
+}
+.teamNom{
+  /*border : 1px solid red ;*/
+  background-color: #333;
+  color : white;
+  border-radius: 2px;
+  height: 30px;
+  padding:5px ;
 }
 
 /* Connexion et inscription la div est présente dans login.html.twig et register_content.html.twig
@@ -483,4 +553,17 @@ body{
 */
 #divContent{
     margin : 80px ;
+}
+#loadingDiv {
+    display: block;
+    margin: 400px;
+    margin-left: 50%;
+
+}
+
+#addFriend{
+  float: right;
+  padding : 6px ;
+  margin : 0px ;
+  cursor : pointer ;
 }

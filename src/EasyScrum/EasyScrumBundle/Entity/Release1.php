@@ -20,7 +20,7 @@ class Release1
       * @ORM\GeneratedValue(strategy="AUTO")
       */
       protected $id;
-      
+
       /**
         *
         * @ORM\Column(name="nom", type="string")
@@ -118,7 +118,7 @@ class Release1
     public function getProjet(){
       return $this->projet ;
     }
-    public function setProjet(Projet $projet){
+    public function setProjet($projet){
       return $this->projet = $projet ;
     }
 

@@ -41,7 +41,7 @@ class CreateRelease extends AbstractType
                   var_dump($this->current_user);
                     return $pr->findProjectsByUser($this->current_user);
                 }*/
-                'choices' => $this->current_user->getProjets(),
+                'choices' => $this->current_user->getMesProjets(),
                 'placeholder' => 'Sélectionner un projet',
     ));
   }

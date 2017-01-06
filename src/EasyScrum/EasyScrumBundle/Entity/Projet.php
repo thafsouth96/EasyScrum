@@ -181,7 +181,7 @@ class Projet
     public function isActive(){
         return $this->active ;
     }
-    public function setActive(boolean $active){
+    public function setActive($active){
       $this->active = $active ;
     }
     /**
@@ -242,37 +242,37 @@ class Projet
     public function getReleases(){
       return $this->releases ;
     }
-    public function addRelease(Release1 $release){
+    public function addRelease($release){
       $this->releases[] = $release;
       return $this ;
     }
-    public function removeRlease(Release1 $release){
+    public function removeRlease($release){
       $this->releases->removeElement($release) ;
     }
     public function getSprints(){
       return $this->sprints;
     }
-    public function addSprint(Sprint $sprint){
+    public function addSprint($sprint){
       $this->sprints[] = $sprint ;
       return $this ;
     }
-    public function removeSprint(Sprint $sprint){
+    public function removeSprint($sprint){
       $this->sprints->removeElement($sprint);
     }
     public function getTeam(){
       return $this->team;
     }
-    public function setTeam(Team $team){
+    public function setTeam($team){
       $this->team = $team ;
     }
     public function getCollaborateurs(){
       return $this->collaborateurs;
     }
-    public function addCollaborateur(User $user){
+    public function addCollaborateur($user){
       $this->collaborateurs[] = $user ;
       return $this ;
     }
-    public function removeCollaborateur(User $user){
+    public function removeCollaborateur($user){
       $this->collaborateurs->removeElement($user);
     }
 }

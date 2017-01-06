@@ -2,20 +2,26 @@ $(document).ready(function(){
 
   //Modifier le href
   $('#connexion').click(function(){
-      $(location).attr('href','http://localhost/Symfony/web/app_dev.php/login');
+       // variable défini dans default/index.html
+      //$(location).attr('href','http://localhost/Symfony/web/app_dev.php/login');
+    $("body").html("<img id='loadingDiv' src='"+urlLoader+"'/>").load(urlConnexion);
   });
   $('#inscription').click(function(){
-     $(location).attr('href','http://localhost/Symfony/web/app_dev.php/register');
+      // variable défini dans default/index.html
+     //$(location).attr('href','http://localhost/Symfony/web/app_dev.php/register');
+     $("body").html("<img id='loadingDiv' src='"+urlLoader+"'/>").load(urlInscription);
   });
 
+
   $('#projetsClick').click(function(){
-    $("#content").load(urlProjets);
+    $("#content").html("<img id='loadingDiv' src='"+urlLoader+"'/>").load(urlProjets);
     $('#menuVertical ul li a').removeClass("active");
     $(this).addClass("active");
   });
 
   $("#personnesClick").click(function(){
-    $("content").load(urlProjets);
+
+    $("#content").html("<img id='loadingDiv' src='"+urlLoader+"'/>").load(urlTeamShow);
     $('#menuVertical ul li a').removeClass("active");
     $(this).addClass("active");
   });
@@ -90,7 +96,6 @@ $(document).ready(function(){
      }
    });
  });
-
  $("#content").on('click','#listAffichage', function(){
     //$("#content").load(urlProjetsList);
     //alert("coucou je fonctionne ") ;
@@ -120,13 +125,41 @@ $(document).ready(function(){
     $.ajax({
       method : "POST",
       url : urlReleases,
+
       success: function(){
-        $("#content").load(urlReleases);
+        $("#content").html("<img id='loadingDiv' src='"+urlLoader+"'/>").load(urlReleases);
       }
 
     });
     //$("#content").load(urlReleases);
  });
+ $('#formcreateP').submit(function(){
+
+  /* $.ajax({
+     type : $(this).attr('method'),
+     url:$(this).attr('action'),
+     data: $(this).serialize(),
+
+   });
+   $.done(function (data) {
+            if (typeof data.message !== 'undefined') {
+                alert(data.message);
+            }
+        })
+        $.fail(function (jqXHR, textStatus, errorThrown) {
+            if (typeof jqXHR.responseJSON !== 'undefined') {
+                if (jqXHR.responseJSON.hasOwnProperty('form')) {
+                    $('#form_body').html(jqXHR.responseJSON.form);
+                }
+
+                $('.form_error').html(jqXHR.responseJSON.message);
+
+            } else {
+                alert(errorThrown);
+            }
+
+        });*/
 
 
-});
+   });
+ });

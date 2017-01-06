@@ -11,7 +11,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class ReleaseController extends Controller
 {
-  public function createAction(Request $request){
+  //id = project id
+  public function createAction(Request $request,$id){
 
   $release = new Release1();
   if( $this->container->get( 'security.authorization_checker' )->isGranted( 'IS_AUTHENTICATED_FULLY' ) )
@@ -19,6 +20,9 @@ class ReleaseController extends Controller
      $user = $this->container->get('security.token_storage')->getToken()->getUser();
      $username = $user->getUsername();
    }
+     $repository = $em->getRepository('EasyScrumEasyScrumBundle:Projet');
+
+     $projet = $repository->findProjectById($id) ;
 
      $form= $this->createForm(CreateRelease::class, $release, array(
         'current_user' => $user,
@@ -28,21 +32,20 @@ class ReleaseController extends Controller
      if($form->isValid() && $form->isSubmitted()){
 
        $nom = $form->get('nom')->getData();
-       $release->setNom($nom);
 
-
-       //on enregistre l'objet projet dans la base de données
+       //on enregistre l'objet release dans la base de données
        $em = $this->getDoctrine()->getManager();
+
+       $release->setProjet($projet);
+       $projet->addRelease($release);
 
        $em->persist($release);
        $em->flush();
-
-       //Redirection vers la vue projet "createProject à modifier "
-       //return $this->redirectToRoute('project_create');
      return new Response('Release'.$nom. 'Created ! ');
    }
-   return $this->render('EasyScrumEasyScrumBundle:Release:releaseCreateView.html.twig', array('form' =>$form->createView()));
+   return $this->render('EasyScrumEasyScrumBundle:Release:releaseCreateView.html.twig', array('form' =>$form->createView(), 'id'=>$id));
   }
+
 
 
 

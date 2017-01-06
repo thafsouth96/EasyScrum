@@ -1,16 +1,22 @@
-<div class="panel panel-warning" id="formCreateTeam">
+<div class="modal fade" id="modelCreateTeam" role="dialog">
+  <div class="modal-dialog modal-lg">
 
-  <div class="panel-heading" id = "titleCreateTeam">Créer une Team </div>
+    <div class="panel panel-warning modal-content" id="formCreateTeam">
 
-
-    <form method="POST" action="{{path('team_create')}}">
-      <div class="panel-body" id="formCreateTeamContent">
-      {{form_start(form)}}
-        {{ form_widget(form)}}
-        <input type="submit" value="Créer" class="btn btn-warning" id="createBtn" />
-
-      {{ form_end(form) }}
+      <div class="panel-heading modal-header" id = "titleCreateTeam">Créer une Team
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
       </div>
-  </form>
 
+
+        <form method="POST" action="{{path('team_create')}}">
+          <div class="panel-body" id="formCreateTeamContent">
+          {{form_start(form)}}
+            {{ form_widget(form)}}
+            <input type="submit" value="Créer" class="btn btn-warning" id="createBtn" />
+          {{ form_end(form) }}
+          </div>
+      </form>
+
+    </div>
+  </div>
 </div>

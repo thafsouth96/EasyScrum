@@ -34,20 +34,36 @@ class TeamController extends Controller
 
        $teamExistante = $repository->findTeamByNom_admin($current_user,$nom) ;
        if($teamExistante !=null){
-         return new Response ('Team ' . $nom .' Existe');
-      }
+                 $this->addFlash(
+                    'error',
+                    'La team existe déja!'
+                  );
+                  return $this->redirectToRoute('easy_scrum_dashbord');
+       }
        else {
        $current_user->addMyTeam($team);
        $team->setAdmin($current_user);
        //on enregistre l'objet projet dans la base de données
        $em->persist($team);
        $em->flush();
-
-       //Redirection vers la vue projet "createProject à modifier "
-       //return $this->redirectToRoute('project_create');
-     return new Response('Team '.$nom. ' Created ! ');
+       $this->addFlash(
+          'success',
+          'La team est bien créer!');
    }
  }
    return $this->render('EasyScrumEasyScrumBundle:Team:teamCreateView.html.twig', array('form' =>$form->createView()));
   }
+
+  public function showTeamsAction(Request $request){
+
+    if( $this->container->get( 'security.authorization_checker' )->isGranted( 'IS_AUTHENTICATED_FULLY' ) )
+    {
+     $current_user = $this->container->get('security.token_storage')->getToken()->getUser();
+    }
+    $listMesTeams = $current_user->getMyTeams();
+    $teams = $current_user->getTeams();
+    $friends = $current_user->getFriends();
+
+    return $this->render('EasyScrumEasyScrumBundle:Team:allTeamView.html.twig', array('listMesTeams' => $listMesTeams, 'teams' => $teams, 'friends' => $friends));
+    }
 }

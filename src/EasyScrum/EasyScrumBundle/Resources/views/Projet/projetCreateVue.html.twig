@@ -7,7 +7,7 @@
           <div class="panel-heading model-header" id = "titleCreateProject">Créer un projet
             <button type="button" class="close" data-dismiss="modal">&times;</button>
           </div>
-            <form method="POST" action="{{path('project_create')}}">
+            <form id= "formcreateP" method="POST" action="{{path('project_create')}}">
               <div class="panel-body" id="formCreateProjectContent">
               {{form_start(form)}}
                 {{ form_widget(form)}}
