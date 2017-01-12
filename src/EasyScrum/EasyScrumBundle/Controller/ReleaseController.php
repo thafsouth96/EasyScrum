@@ -20,9 +20,12 @@ class ReleaseController extends Controller
      $user = $this->container->get('security.token_storage')->getToken()->getUser();
      $username = $user->getUsername();
    }
+     $em = $this->getDoctrine()->getManager();
      $repository = $em->getRepository('EasyScrumEasyScrumBundle:Projet');
 
      $projet = $repository->findProjectById($id) ;
+     var_dump($projet);
+     var_dump($id);
 
      $form= $this->createForm(CreateRelease::class, $release, array(
         'current_user' => $user,
@@ -36,8 +39,8 @@ class ReleaseController extends Controller
        //on enregistre l'objet release dans la base de données
        $em = $this->getDoctrine()->getManager();
 
-       $release->setProjet($projet);
-       $projet->addRelease($release);
+      // $release->setProjet($projet);
+    //   $projet->addRelease($release);
 
        $em->persist($release);
        $em->flush();

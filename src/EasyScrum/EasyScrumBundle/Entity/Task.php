@@ -22,6 +22,20 @@ class Task
     private $id;
 
     /**
+      *
+      * @ORM\Column(name="name", type="string")
+      */
+    private $name;
+
+    /**
+      * @var string
+      *
+      * @ORM\Column(name="description", type="string", length=255, nullable= true)
+      */
+    private $description;
+
+
+    /**
       * @ORM\ManyToOne(targetEntity="EasyScrum\EasyScrumBundle\Entity\UserStory", inversedBy="tasks")
       *
       */
@@ -35,7 +49,6 @@ class Task
       */
     private $responsable;
 
-
     /**
      * Get id
      *
@@ -44,5 +57,17 @@ class Task
     public function getId()
     {
         return $this->id;
+    }
+    public function getName(){
+      return $this->name ;
+    }
+    public function setName($name){
+      $this->name = $name;
+    }
+    public function getDescription(){
+      return $this->description ;
+    }
+    public function setDescription($description){
+      $this->description = $description ;
     }
 }

@@ -10,17 +10,21 @@ use EasyScrum\EasyScrumBundle\Form\AddFriendType ;
 class UserController extends BaseController
 {
 
-  public function addFriendAction(Request $request){
+  public function addFriendAction(Request $request, $users){
 
 
     if( $this->container->get( 'security.authorization_checker' )->isGranted( 'IS_AUTHENTICATED_FULLY' ) )
     {
      $current_user = $this->container->get('security.token_storage')->getToken()->getUser();
     }
-    
-
     $form =$this->createForm(AddFriendType::class);
 
+    if($form->isValid() && $form->isSubmitted())
+    {
+      $name = $form->get('name')->getData();
+      $userManager = $this->get('fos_user.user_manager');
+      $users = $userManager->findUserByUsername($name);
+    }
     return $this->render('EasyScrumEasyScrumBundle:Team:addFriend.html.twig', array('form' =>$form->createView()));
 
     }

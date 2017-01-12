@@ -108,12 +108,14 @@ box-shadow: inset 0px 0px 62px -1px rgba(0,0,0,0.75);
 /* La div qui contient la présentation du produit */
 #presentation {
   width: 80%;
-margin: 0 auto;
+  margin: 0 auto;
+  background-color: #bfbfbf;
+
 }
 /* Avec EasyScrum */
 #presentationTexte
 {
-    margin: 20px 20px;
+  padding : 10px ;
   font-size: 20px;
   font-weight: bold ;
 }
@@ -154,6 +156,7 @@ padding: 1%;
 }
 .textFonction{
   display: inline-block;
+  margin-bottom: 24px;
 }
 .contentFonction{
   margin-left: 10px;
@@ -161,17 +164,20 @@ padding: 1%;
 .titreImage{
   width : 60px;
   height: 60px;
-  margin-left: 30%;
+  margin-left: 40%;
+
 }
 .titre {
-  margin-left: 20%;
+  text-align: center;
   font-weight: bold ;
+  margin-bottom: 26px;
 }
 
 /*la div contenat la video, texte ainsi que le boutton "demo en ligne" */
 #demo {
   width: 80%;
-margin: 0 auto;
+  margin: 0 auto;
+  background-color: #bfbfbf
 }
 
 /* La div contenant la video de la démo */
@@ -190,15 +196,17 @@ margin: 0 auto;
 }
 /*Bouton "demo En ligne" */
 #demo button{
-  background-color:#333333 ;
   width : 150px;
   height: 30px;
+  margin-right: 10px;
   border : none;
   color : white;
   font-size: 16px;
   font-weight: bold;
-  margin-left: 140px;
-
+  float: right;
+  background-color: #e6ac00;
+  border-radius: 15px;
+  border: none;
 }
 
 #demo button:hover{

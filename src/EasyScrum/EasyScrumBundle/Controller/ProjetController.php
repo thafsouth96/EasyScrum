@@ -117,7 +117,7 @@ public function createAction(Request $request){
 
       $repository = $em->getRepository('EasyScrumEasyScrumBundle:Projet');
 
-      $projet = $repository->findProjectById($id) ;
+      $projet = $repository->findProjectById($id);
 
       if(!$projet){
         throw $this->createNotFoundException('projet non trouvé.');

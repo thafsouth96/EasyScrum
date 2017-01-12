@@ -22,6 +22,19 @@ class Sprint
     private $id;
 
     /**
+      *
+      * @ORM\Column(name="name", type="string")
+      */
+    private $name;
+
+    /**
+      * @var string
+      *
+      * @ORM\Column(name="description", type="string", length=255, nullable= true)
+      */
+    private $description;
+
+    /**
       * @ORM\ManyToOne(targetEntity="EasyScrum\EasyScrumBundle\Entity\Projet", inversedBy="sprints")
       * @ORM\JoinColumn(name="projet_id")
       *
@@ -51,6 +64,18 @@ class Sprint
        */
      private $teamResponsable;
 
+     /**
+       * @var Datetime
+       *
+       *@ORM\Column(name="dateStart", type="datetime", nullable= false)
+       */
+     private $dateStart ;
+     /**
+       * @var Datetime
+       *
+       *@ORM\Column(name="dateEnd", type="datetime", nullable= false)
+       */
+     private $dateEnd ;
 
 
 
@@ -62,6 +87,32 @@ class Sprint
     public function getId()
     {
         return $this->id;
+    }
+
+    public function getName(){
+      return $this->name ;
+    }
+    public function setName($name){
+      $this->name = $name;
+    }
+    public function getDateStart(){
+      return $this->dateStart;
+    }
+
+    public function setDateStart($date){
+      $this->dateStart = $date ;
+    }
+    public function getDateEnd(){
+      return $this->dateEnd ;
+    }
+    public function setDateEnd($date){
+      $this->dateEnd = $date ;
+    }
+    public function getDescription(){
+      return $this->description ;
+    }
+    public function setDescription($description){
+      $this->description = $description ; 
     }
     public function getProjet(){
       return $this->projet ;

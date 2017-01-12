@@ -25,9 +25,8 @@ project_view :
   path: /dashboard/projets/{id}
   defaults: { _controller: EasyScrumEasyScrumBundle:Projet:showProject }
 
-
 release_create:
-    path: /dashboard/projets/{id}/releases/createRelease
+    path: /dashboard/projets/releases/createRelease
     defaults: { _controller: EasyScrumEasyScrumBundle:Release:create }
 
 show_teams:
@@ -40,3 +39,15 @@ team_create:
 add_friend:
     path: /dashboard/teams/addFriend
     defaults: { _controller: EasyScrumEasyScrumBundle:User:addFriend}
+
+sprint_create:
+    path:     /dashboard/sprints/create
+    defaults: { _controller: EasyScrumEasyScrumBundle:Sprint:create }
+
+userStory_create:
+    path:     /dashboard/userStrories/create
+    defaults: { _controller: EasyScrumEasyScrumBundle:UserStory:create }
+
+task_create:
+    path:     /dashboard/tasks/create
+    defaults: { _controller: EasyScrumEasyScrumBundle:Task:create }

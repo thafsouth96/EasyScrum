@@ -7,7 +7,7 @@
        <button type="button" class="close" data-dismiss="modal">&times;</button>
      </div>
 
-        <form method="POST" action="{{path('release_create')}}">
+        <form method="POST" action="{{ path('release_create', {'id': id}) }}">
           <div class="panel-body" id="formCreateReleaseContent">
           {{form_start(form)}}
             {{ form_widget(form)}}
