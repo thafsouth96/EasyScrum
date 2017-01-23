@@ -12,9 +12,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 class ReleaseController extends Controller
 {
   //id = project id
-  public function createAction(Request $request,$id){
+  public function createAction(Request $request){
 
   $release = new Release1();
+
   if( $this->container->get( 'security.authorization_checker' )->isGranted( 'IS_AUTHENTICATED_FULLY' ) )
   {
      $user = $this->container->get('security.token_storage')->getToken()->getUser();
@@ -23,9 +24,7 @@ class ReleaseController extends Controller
      $em = $this->getDoctrine()->getManager();
      $repository = $em->getRepository('EasyScrumEasyScrumBundle:Projet');
 
-     $projet = $repository->findProjectById($id) ;
-     var_dump($projet);
-     var_dump($id);
+
 
      $form= $this->createForm(CreateRelease::class, $release, array(
         'current_user' => $user,
@@ -35,21 +34,34 @@ class ReleaseController extends Controller
      if($form->isValid() && $form->isSubmitted()){
 
        $nom = $form->get('nom')->getData();
+       $project_id = $_POST['project_id'] ;
+       $projet = $repository->findProjectById($project_id) ;
+       $repositoryRelease = $em->getRepository('EasyScrumEasyScrumBundle:Release1');
 
-       //on enregistre l'objet release dans la base de données
-       $em = $this->getDoctrine()->getManager();
+       $releaseExistante  = $repositoryRelease->findReleaseByProject_name($projet,$nom);
+       //var_dump($releaseExistante);
 
-      // $release->setProjet($projet);
-    //   $projet->addRelease($release);
+       if($releaseExistante !=null){
+         $this->addFlash(
+            'error',
+            'Une release du meme nom existe déja!'
+          );
+          return $this->redirectToRoute('easy_scrum_dashbord');
+       }
+       else {
+         $release->setProjet($projet[0]);
+         $projet[0]->addRelease($release);
 
-       $em->persist($release);
-       $em->flush();
-     return new Response('Release'.$nom. 'Created ! ');
+         $em->persist($release);
+         $em->flush();
+         $this->addFlash(
+            'success',
+            'La release est bien créée!'
+        );
+        return $this->redirectToRoute('easy_scrum_dashbord');
+       }
    }
-   return $this->render('EasyScrumEasyScrumBundle:Release:releaseCreateView.html.twig', array('form' =>$form->createView(), 'id'=>$id));
+   return $this->render('EasyScrumEasyScrumBundle:Release:releaseCreateView.html.twig', array('form' =>$form->createView()));
   }
-
-
-
 
 }

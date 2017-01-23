@@ -19,29 +19,40 @@ class SprintController extends Controller
        $current_user = $this->container->get('security.token_storage')->getToken()->getUser();
       }
 
-       $form = $this->createForm(CreateSprintType::class, $sprint);
+        $em = $this->getDoctrine()->getManager();
+        $form = $this->createForm(CreateSprintType::class, $sprint);
 
        $form->handleRequest($request);
 
        if($form->isValid() && $form->isSubmitted())
        {
+         $nom = $form->get('name')->getData();
+         $release_id = $_POST['release_id'];
+         $repository = $em->getRepository('EasyScrumEasyScrumBundle:Release1');
+         $release = $repository->findOneBy(array('id' => $release_id));
+         $repositorySprint = $em->getRepository('EasyScrumEasyScrumBundle:Sprint');
+         $sprintExistant = $repositorySprint->findSprintByRlease_name($release,$nom);
 
-           $nom = $form->get('name')->getData();
+         if($sprintExistant != null){
+           $this->addFlash(
+              'error',
+              'Un sprint du meme nom existe déja!'
+            );
+            return $this->redirectToRoute('easy_scrum_dashbord');
+         }
 
-
-           $em = $this->getDoctrine()->getManager();
-           $repository = $em->getRepository('EasyScrumEasyScrumBundle:Sprint');
-
-           /* TODO : vérifier que y a pas le meme sprint du meme nom dans la release */
-           /* PB : j'arrive pas à récupérer l'id de la release */
-
-
-            $em->persist($sprint);
-            $em->flush();
-            $this->addFlash(
-               'success',
-               'Le sprint est bien créer!'
-           );
+         else {
+           $sprint->setRelease($release);
+           $sprint->setProjet($release->getProjet());
+           $release->addSprint($sprint);
+           $em->persist($sprint);
+           $em->flush();
+           $this->addFlash(
+              'success',
+              'Le sprint est bien créer!'
+          );
+            return $this->redirectToRoute('easy_scrum_dashbord');
+         }
 
       }
        return $this->render('EasyScrumEasyScrumBundle:Sprint:create.html.twig', array('form' =>$form->createView()));

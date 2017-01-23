@@ -35,15 +35,16 @@ class CreateRelease extends AbstractType
           'label' => 'Date livraison prévisionnel',
           'required' => false,
     ))
-    ->add('projet', ChoiceType::class, array(
+  /*  ->add('projet', ChoiceType::class, array(
               //'class' => 'EasyScrumEasyScrumBundle:Projet',
               /*'query_builder'=> function (ProjetRepository $pr) {
                   var_dump($this->current_user);
                     return $pr->findProjectsByUser($this->current_user);
                 }*/
-                'choices' => $this->current_user->getMesProjets(),
+                /*'choices' => $this->current_user->getMesProjets(),
                 'placeholder' => 'Sélectionner un projet',
-    ));
+    ))*/;
+
   }
 
   public function configureOptions(OptionsResolver $resolver){

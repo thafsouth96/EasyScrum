@@ -46,6 +46,7 @@
     <div id="projetBlock" class="well">
       <div class="well" id="projetNom">{{ projet.nom }}</div>
       <div id="projetRecap">{{ projet.description }}</div>
+      <div class="hidden_id">{{ projet.id}}</div>
       <div class="hidden_url">{{ path('project_view', {'id' : projet.id}) }}</div>
     </div>
     {% endfor %}

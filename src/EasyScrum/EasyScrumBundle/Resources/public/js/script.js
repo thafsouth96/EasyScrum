@@ -1,17 +1,13 @@
 $(document).ready(function(){
 
-  //Modifier le href
   $('#connexion').click(function(){
        // variable défini dans default/index.html
-      //$(location).attr('href','http://localhost/Symfony/web/app_dev.php/login');
     $("body").html("<img id='loadingDiv' src='"+urlLoader+"'/>").load(urlConnexion);
   });
   $('#inscription').click(function(){
       // variable défini dans default/index.html
-     //$(location).attr('href','http://localhost/Symfony/web/app_dev.php/register');
      $("body").html("<img id='loadingDiv' src='"+urlLoader+"'/>").load(urlInscription);
   });
-
 
   $('#projetsClick').click(function(){
     $("#content").html("<img id='loadingDiv' src='"+urlLoader+"'/>").load(urlProjets);
@@ -61,9 +57,6 @@ $(document).ready(function(){
     $(this).addClass("active");
   });
 
-
-
-
   $(function(){
    $(window).scroll(function () {//Au scroll dans la fenetre on déclenche la fonction
       if ($(this).scrollTop() > 80) { //si on a défilé de plus de 80px du haut vers le bas
@@ -74,54 +67,13 @@ $(document).ready(function(){
    });
  });
 
- $("#content").on('click', '#plusCreateProjet', function(){
-
-   $.ajax({
-     type : "POST",
-     url: urlCreateProject,
-     success: function(){
-       //$("#content").load(urlCreateProject);
-
-     }
-   });
- });
-
- $("#content").on('click', '#plusCreateEquipe', function(){
-
-   $.ajax({
-     type : "POST",
-     success: function(){
-       //$("#content").load(urlCreateEquipe);
-
-     }
-   });
- });
  $("#content").on('click','#listAffichage', function(){
-    //$("#content").load(urlProjetsList);
-    //alert("coucou je fonctionne ") ;
  });
-
- // Traiter l'exception d'insertion d'un projet du meme nom
-
- /*$("#content").on('click','#createBtn',function(){
-   $.ajax({
-     url : urlCreateProject,
-     dataType : 'json',
-     success : function(){
-       alert("Projet Créer");
-     },
-     error: function(){
-       alert("Projet existant");
-     }
-   });
- });*/
 
  /* Affichage des releases en colonne onclick sur une div d'un projet*/
 
  $("#content").on('click','#projetBlock',function(){
    urlReleases = $(this).children('.hidden_url').text();
-    /*projectName = $('#projetNom').text();
-    alert(projectName) ;*/
     $.ajax({
       method : "POST",
       url : urlReleases,
@@ -131,35 +83,38 @@ $(document).ready(function(){
       }
 
     });
-    //$("#content").load(urlReleases);
  });
- $('#formcreateP').submit(function(){
-
-  /* $.ajax({
-     type : $(this).attr('method'),
-     url:$(this).attr('action'),
-     data: $(this).serialize(),
-
-   });
-   $.done(function (data) {
-            if (typeof data.message !== 'undefined') {
-                alert(data.message);
-            }
-        })
-        $.fail(function (jqXHR, textStatus, errorThrown) {
-            if (typeof jqXHR.responseJSON !== 'undefined') {
-                if (jqXHR.responseJSON.hasOwnProperty('form')) {
-                    $('#form_body').html(jqXHR.responseJSON.form);
-                }
-
-                $('.form_error').html(jqXHR.responseJSON.message);
-
-            } else {
-                alert(errorThrown);
-            }
-
-        });*/
-
-
-   });
+ $("#content").on('click','#projetBlock',function(){
+   project_id =  $(this).children('.hidden_id').text();
+   console.log(project_id);
+   //utilisation de l'id dans releaseCreateView
+   //Ajout d'un input hidden afin de pouvoir récupérer l'id du projet parent de la release et le passer au controlleur avec la variable POST
  });
+
+
+ //Toggle the description of a release à modifier
+
+ $('#content').on('click', '.dropDownDescription', function() {
+  var toggleDiv = $(this).parents(".releaseColonne").children(".toggleDivDesc");
+  var releaseDesc = toggleDiv.children(".releaseRecap");
+  console.log(releaseDesc.text());
+  if( releaseDesc.text() == ""){
+    releaseDesc.innerHTML = "Vous n'avez pas rentré de description" ;
+    releaseDesc.css("font-style", "italic");
+  }
+  toggleDiv.slideToggle(50);
+
+ });
+
+
+
+ $('#content').on('click','#plusCreateSprint', function(){
+   release_id = $(this).parents(".releaseName").children('.hidden_release_id').text();
+   console.log(release_id);
+   if(!$('#hidden_input_release_id').length){
+       $('#create_sprint').append('<input type="text" id="hidden_input_release_id" name="release_id" value="'+ release_id +'">');
+   } else {
+      $('#hidden_input_release_id').val(release_id);
+   }
+ });
+});

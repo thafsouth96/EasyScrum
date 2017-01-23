@@ -121,5 +121,11 @@ class Release1
     public function setProjet($projet){
       return $this->projet = $projet ;
     }
+    public function getSprints(){
+      return $this->sprints ;
+    }
+    public function addSprint(){
+    
+    }
 
 }

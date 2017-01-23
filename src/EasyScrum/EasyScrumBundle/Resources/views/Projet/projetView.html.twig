@@ -6,11 +6,29 @@
 
  {{ render(controller('EasyScrumEasyScrumBundle:Release:create')) }}
 
-  <div id="releases">
+</div>
+<div id="releases">
     {% for release in listReleases %}
-    <div class="releaseColonne well">
-      <div class="well releaseName">{{ release.nom }}</div>
-      <div class = "releaseRecap">{{ release.description }}</div>
-    </div>
+    <div class="releaseColonne panel panel-default">
+      <div class="releaseName panel-heading">{{ release.nom }}
+        <span class="fa fa-chevron-down dropDownDescription" aria-hidden="true"></span>
+        <span class="fa fa-plus" id="plusCreateSprint" aria-hidden="true" data-toggle="modal" data-target="#modalCreateSprint"></span>
+        <div class="hidden_release_id" style="display:none; ">{{ release.id }}</div>
+      </div>
+      {{ render(controller('EasyScrumEasyScrumBundle:Sprint:create')) }}
+      <div class ="panel panel-default toggleDivDesc" style="display:none; ">
+        <div class="toggleDescription"> Description </div>
+        <div id ="{{ release.id }}" class = "releaseRecap" >{{ release.description }}</div>
+      </div>
+      {% for sprint in release.sprints %}
+        <div class="sprintPostIt">
+          <div class="sprintName"> {{ sprint.name }}
+            <span class="fa fa-times delete-sprint" aria-hidden="true"></span>
+            <span class="fa fa-pencil edit-sprint" aria-hidden="true"></span>
+          </div>
+          <div class="sprintRecap"> {{ sprint.description }} </div>
+        </div>
+      {% endfor %}
+      </div>
     {% endfor %}
   </div>

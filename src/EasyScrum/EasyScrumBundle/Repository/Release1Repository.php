@@ -10,4 +10,13 @@ namespace EasyScrum\EasyScrumBundle\Repository;
  */
 class Release1Repository extends \Doctrine\ORM\EntityRepository
 {
+  public function findReleaseByProject_name($project, $name){
+    $queryBuilder = $this->createQueryBuilder('r')
+                    ->where('r.projet = :project')
+                    ->setParameter('project', $project)
+                    ->andWhere('r.nom = :nom')
+                    ->setParameter('nom' , $name);
+    return $queryBuilder->getQuery()->getOneOrNullResult();
+
+  }
 }

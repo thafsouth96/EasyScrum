@@ -10,4 +10,13 @@ namespace EasyScrum\EasyScrumBundle\Repository;
  */
 class SprintRepository extends \Doctrine\ORM\EntityRepository
 {
+  public function findSprintByRlease_name($release, $name){
+    $queryBuilder = $this->createQueryBuilder('s')
+                    ->where('s.release = :release')
+                    ->setParameter('release', $release)
+                    ->andWhere('s.name = :name')
+                    ->setParameter('name' , $name);
+    return $queryBuilder->getQuery()->getOneOrNullResult();
+
+  }
 }

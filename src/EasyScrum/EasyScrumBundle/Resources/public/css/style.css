@@ -303,8 +303,8 @@ background-color: rgba(25,25,25,1);
   width: calc(100% - 200px) ;
   height: 950px ;
   margin : 0px;
-  padding: 0px;
-
+  padding: 10px;
+  overflow: auto;
 
 }
 
@@ -440,7 +440,8 @@ background-color: rgba(25,25,25,1);
   margin : 8px ;
 }
 
-#projects{
+
+#projects, #releases{
   clear : both;
   height: 893px;
   animation-name: animatebottom;
@@ -465,11 +466,10 @@ background-color: rgba(25,25,25,1);
   background-color: #FFC230 ;
   height: 40px;
 }
-.hidden_url{
+.hidden_url, .hidden_id, #hidden_input_release_id, #hidden_div_id {
   visibility: hidden;
 }
-
-#plusCreateProjet, #plusCreateTeam{
+#plusCreateProjet, #plusCreateTeam, #plusCreateRelease{
   float : left ;
   margin-left : 8px ;
   margin-top: 3px;
@@ -479,12 +479,12 @@ background-color: rgba(25,25,25,1);
 }
 
 
-#formCreateProject, #formCreateTeam, #formaddFriend{
+#formCreateProject, #formCreateTeam, #formaddFriend, #formCreateRelease, #formCreateSprint{
 
   margin : 40px;
 
 }
-#titleCreateProject, #titleCreateTeam, #titleaddFriend{
+#titleCreateProject, #titleCreateTeam, #titleaddFriend, #titleCreateRelease, #titleCreateSprint {
 
   background-color: #FFC230
 
@@ -492,11 +492,11 @@ background-color: rgba(25,25,25,1);
 
 
 
-#formCreateProjectContent, #formCreateTeamContent , #formaddFriendContent{
+#formCreateProjectContent, #formCreateTeamContent , #formaddFriendContent, #formCreateSprintContent{
   margin-right: 10px ;
   margin-top: 0px;
 }
-#formCreateProjectContent input, #formCreateProjectContent label, #formCreateTeamContent label, #formCreateTeamContent input, #formaddFriendContent input, #formaddFriendContent label {
+#formCreateProjectContent input, #formCreateProjectContent label, #formCreateTeamContent label, #formCreateTeamContent input, #formaddFriendContent input, #formaddFriendContent label, #create_release label, #create_release input, #formCreateSprint label, #formCreateSprint input {
   margin : 10px;
   margin-left: 0px ;
 }
@@ -574,4 +574,55 @@ background-color: rgba(25,25,25,1);
   padding : 6px ;
   margin : 0px ;
   cursor : pointer ;
+}
+#releases{
+
+
+}
+.releaseColonne {
+  height: 950px ;
+  width : 230px;
+  float: left;
+
+
+}
+.releaseRecap {
+  padding:10px ;
+
+}
+.sprintPostIt{
+  background: #ebeb5c /*#fefabc*/;
+  padding:10px;
+  font-family: 'Gloria Hallelujah', cursive;
+  font-size:15px;
+  color: #000;
+  width:200px;
+  height: 200px;
+  margin:10px;
+  box-shadow: 0px 4px 6px #333;
+  -moz-box-shadow: 0px 4px 6px #333;
+  -webkit-box-shadow: 0px 4px 6px #333;
+}
+.sprintName{
+  border-bottom: 1px solid #c6c65e ;
+  padding-bottom: 5px;
+}
+
+.delete-sprint, .edit-sprint{
+  float : right;
+  margin: 2px ;
+}
+.dropDownDescription{
+  float: right;
+}
+.toggleDescription{
+  font-weight: bold;
+}
+
+#plusCreateSprint{
+  float: right ;
+  margin-right:5px ;
+}
+.toggleDivDesc {
+  padding : 10px ; 
 }
