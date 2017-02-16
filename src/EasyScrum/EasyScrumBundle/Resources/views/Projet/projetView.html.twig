@@ -1,5 +1,18 @@
 
+<script>
+function allowDrop(ev) {
+   ev.preventDefault();
+}
 
+function drag(ev){
+ ev.dataTransfer.setData("text", ev.target.id);
+}
+function drop(ev){
+ ev.preventDefault();
+ var data= ev.dataTransfer.getData("text");
+ ev.target.appendChild(document.getElementById(data)) ;
+}
+</script>
 
 
 <div id="plusCreateRelease" class="fa fa-plus-square-o fa-3x" data-toggle ="modal" data-target="#modelCreateRelease" aria-hidden="true"></div>
@@ -9,7 +22,7 @@
 </div>
 <div id="releases">
     {% for release in listReleases %}
-    <div class="releaseColonne panel panel-default">
+    <div class="releaseColonne panel panel-default dropper" ondrop="drop(event)" ondragover="allowDrop(event)">
       <div class="releaseName panel-heading">{{ release.nom }}
         <span class="fa fa-chevron-down dropDownDescription" aria-hidden="true"></span>
         <span class="fa fa-plus" id="plusCreateSprint" aria-hidden="true" data-toggle="modal" data-target="#modalCreateSprint"></span>
@@ -21,7 +34,7 @@
         <div id ="{{ release.id }}" class = "releaseRecap" >{{ release.description }}</div>
       </div>
       {% for sprint in release.sprints %}
-        <div class="sprintPostIt">
+        <div class="sprintPostIt draggable" draggable="true" ondragstart="drag(event)" id="drag1">
           <div class="sprintName"> {{ sprint.name }}
             <span class="fa fa-times delete-sprint" aria-hidden="true"></span>
             <span class="fa fa-pencil edit-sprint" aria-hidden="true"></span>

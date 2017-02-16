@@ -73,7 +73,8 @@ $(document).ready(function(){
  /* Affichage des releases en colonne onclick sur une div d'un projet*/
 
  $("#content").on('click','#projetBlock',function(){
-   urlReleases = $(this).children('.hidden_url').text();
+   urlReleases = $(this).parent().children('.hidden_url').text();
+   console.log(urlReleases);
     $.ajax({
       method : "POST",
       url : urlReleases,
@@ -96,14 +97,13 @@ $(document).ready(function(){
 
  $('#content').on('click', '.dropDownDescription', function() {
   var toggleDiv = $(this).parents(".releaseColonne").children(".toggleDivDesc");
-  var releaseDesc = toggleDiv.children(".releaseRecap");
+   releaseDesc = toggleDiv.children(".releaseRecap");
   console.log(releaseDesc.text());
   if( releaseDesc.text() == ""){
-    releaseDesc.innerHTML = "Vous n'avez pas rentré de description" ;
+    releaseDesc.text("Aucune description n'est enregistrée");
     releaseDesc.css("font-style", "italic");
   }
   toggleDiv.slideToggle(50);
-
  });
 
 
@@ -117,4 +117,23 @@ $(document).ready(function(){
       $('#hidden_input_release_id').val(release_id);
    }
  });
+
+ $('#content').on('click','.archiveProject',function(){
+
+   // récupérer id du projet
+   projectToarchive_id = $(this).parents('.divProject').children('#projetBlock').children('.hidden_id').text();
+   console.log(projectToarchive_id);
+   // Mettre la div en visibility : none
+
+   // Dans le controleur Récupérer le projet
+   //update dans la base de donnée : attribut active en true
+   //
+ });
+$('#content').on('click', '#archiveIcon', function(){
+  console.log("coucou"); 
+  $('#content').load(urlArchivedProjects);
+
+});
+
+
 });

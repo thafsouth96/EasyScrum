@@ -25,6 +25,17 @@ project_view :
   path: /dashboard/projets/{id}
   defaults: { _controller: EasyScrumEasyScrumBundle:Projet:showProject }
 
+project_archive :
+  path : /dashboard/archive
+  defaults: { _controller: EasyScrumEasyScrumBundle:Projet:archive}
+project_active :
+  path : /dashboard/active
+  defaults : { _controller: EasyScrumEasyScrumBundle:Projet:active}
+
+show_archive :
+  path : /dashboard/archivedProjects
+  defaults : { _controller: EasyScrumEasyScrumBundle:Projet:showArchive}
+
 release_create:
     path: /dashboard/projets/releases/createRelease
     defaults: { _controller: EasyScrumEasyScrumBundle:Release:create }

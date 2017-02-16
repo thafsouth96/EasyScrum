@@ -1,0 +1,22 @@
+
+    <div id="myprojects">
+      <!--div class="panel-heading model-header" id = "divtitle">Les projets archivés
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div-->
+      <div class="divtitle"> Les projets archivés </div>
+      {% for projet in archivedProjects %}
+      <div class="divProject" >
+        <div class="well" id="projetNom">{{ projet.nom }}
+          <form class="activeProject" action="{{path('project_active')}}" method="post">
+            <input class="hiddenId_projectToActive" type ="text" name="projectToActive_id" value="{{projet.id}}">
+            <button type ="submit" class="fa fa-circle enableCircle" aria-hidden="true" style="color : orange;" onclick="return(confirm('Etes-vous sûr de vouloir activer ce projet'));">
+          </form>
+        </div>
+        <div id="projetBlock" class="well">
+          <div id="projetRecap">{{ projet.description }}</div>
+          <div class="hidden_id">{{ projet.id}}</div>
+          <div class="hidden_url">{{ path('project_view', {'id' : projet.id}) }}</div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>

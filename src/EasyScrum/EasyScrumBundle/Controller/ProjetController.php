@@ -84,14 +84,47 @@ public function createAction(Request $request){
     public function showProjectsAction(Request $request){
 
       $current_user = $this->getUser();
-      $listMesProjets = $current_user->getMesProjets() ;
-      $listProjets = $current_user->getProjets();
-
-      $allProjets = new ArrayCollection(
+      $myProjects = $current_user->getMesProjets() ;
+      foreach ($myProjects as $project) {
+        if(!$project->isActive()){
+          $myProjects->removeElement($project) ;
+        }
+      }
+      $projects = $current_user->getProjets();
+      foreach ($projects as $project) {
+        if(!$project->isActive()){
+          $projects->removeElement($project) ;
+        }
+      }
+      /*$allProjets = new ArrayCollection(
         array_merge($listMesProjets->toArray(), $listProjets->toArray())
+      );*/
+
+      return $this->render('EasyScrumEasyScrumBundle:Projet:allprojetsVue.html.twig', array('myProjects' => $myProjects, 'projects' => $projects ));
+    }
+
+
+    public function showArchiveAction(Request $request){
+
+      $current_user = $this->getUser();
+      $myProjects = $current_user->getMesProjets() ;
+      foreach ($myProjects as $project) {
+        if($project->isActive()){
+          $myProjects->removeElement($project) ;
+        }
+      }
+      $projects = $current_user->getProjets();
+      foreach ($projects as $project) {
+        if(!$project->isActive()){
+          $projects->removeElement($project) ;
+        }
+      }
+
+      $archivedProjets = new ArrayCollection(
+        array_merge($myProjects->toArray(), $projects->toArray())
       );
 
-      return $this->render('EasyScrumEasyScrumBundle:Projet:allprojetsVue.html.twig', array('allProjets' => $allProjets));
+      return $this->render('EasyScrumEasyScrumBundle:Projet:archivedProjectsVue.html.twig', array('archivedProjects' => $archivedProjets ));
     }
 
     public function editProjectAction($name){
@@ -127,5 +160,44 @@ public function createAction(Request $request){
       }
       return $this->render('EasyScrumEasyScrumBundle:Projet:projetView.html.twig', array('listReleases' => $releases,'id' =>$id));
     }
+    public function archiveAction(){
+      $project_id = $_POST['projectToarchive_id'] ;
+      $em = $this->getDoctrine()->getManager();
+
+      $repository = $em->getRepository('EasyScrumEasyScrumBundle:Projet');
+
+      $projet = $repository->findProjectById($project_id);
+      $projet[0]->setActive(0) ;
+
+      $em->merge($projet[0]);
+      $em->flush();
+      $this->addFlash(
+         'success',
+         'Le projet est bien archivé!'
+     );
+
+      // Redirection vers la vue projet "createProject à modifier"
+
+       return $this->redirectToRoute('easy_scrum_dashbord');
+    }
+    public function activeAction(){
+      $project_id = $_POST['projectToActive_id'];
+      $em = $this->getDoctrine()->getManager();
+
+      $repository = $em->getRepository('EasyScrumEasyScrumBundle:Projet');
+
+      $projet = $repository->findProjectById($project_id);
+      $projet[0]->setActive(1) ;
+
+      $em->merge($projet[0]);
+      $em->flush();
+      $this->addFlash(
+         'success',
+         'Le projet est bien activé!'
+     );
+
+     return $this->redirectToRoute('easy_scrum_dashbord');
+    }
+
 
 }

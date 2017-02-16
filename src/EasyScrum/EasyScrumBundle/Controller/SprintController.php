@@ -58,4 +58,12 @@ class SprintController extends Controller
        return $this->render('EasyScrumEasyScrumBundle:Sprint:create.html.twig', array('form' =>$form->createView()));
     }
 
+    public function showAction(){
+      
+    }
+
+    public function deleteAction(){
+
+    }
+
 }

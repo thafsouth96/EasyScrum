@@ -69,7 +69,7 @@
   </div>
 </nav>
 
-<div id="menuContent">
+<div id="menuContent" class="menuContent">
   <div id="menuVertical">
       <ul>
         <li><a id="projetsClick"><img class='imageMenu' src= {{ asset('bundles/easyscrumeasyscrum/images/projetIcon.png')}} alt="projetIcon"><p class="texteMenu">Projets</p></a></li>
@@ -133,6 +133,7 @@
     urlLoader = ('{{ asset("bundles/easyscrumeasyscrum/images/loader.gif")}}');
    {#urlEquipeList = ('{{ path("fos_user_group_list")}}');#}
    {#urlCreateEquipe = ('{{ path ("fos_user_group_new")}}') ;#}
+   urlArchivedProjects =('{{ path("show_archive")}}') ;
 
 </script>
 <script src= {{ asset('bundles/easyscrumeasyscrum/js/script.js') }}  ></script>

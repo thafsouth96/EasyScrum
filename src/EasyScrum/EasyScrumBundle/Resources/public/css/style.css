@@ -298,8 +298,7 @@ background-color: rgba(25,25,25,1);
 /***************** CSS Menus dashbord *****/
 /*****************************************/
 #content{
-  /*display: inline-block;*/
-  float: left;
+  display: inline-block;
   width: calc(100% - 200px) ;
   height: 950px ;
   margin : 0px;
@@ -356,6 +355,12 @@ background-color: rgba(25,25,25,1);
 #menuContent{
   min-height: 100%
 }
+
+ .menuContent{
+   width: 200px;
+height: 950px;
+float: left;
+ }
 
 /* Menu Horizontal */
 
@@ -453,21 +458,53 @@ background-color: rgba(25,25,25,1);
   color : white;
   font-weight: bold;
 }
-#projetBlock{
-  width : 200px ;
-  height: 200px ;
+.divtitle{
+  clear : both;
+  padding: 7px;
+  background-color: #efefef ;
+  border-radius: 5px ;
+  height: 40px;
+  font-size: 18px;
+  font-weight: bold;
+
+
+}
+.divProject{
   float: left  ;
   margin : 20px ;
-  padding:0px;
+
+
+}
+#projetBlock{
   cursor: pointer;
+  width : 200px ;
+  height: 150px ;
+  margin-bottom: 0px;
+}
+#projetBlock:hover{
+  background: #e3e3e3;
 }
 #projetNom {
   padding: 8px ;
   background-color: #FFC230 ;
   height: 40px;
+  margin : 0px ;
 }
-.hidden_url, .hidden_id, #hidden_input_release_id, #hidden_div_id {
-  visibility: hidden;
+.archiveProject, .activeProject{
+  float : right ;
+}
+.disableCircle, .enableCircle{
+
+  cursor: pointer;
+}
+#archiveIcon{
+  margin:1px;
+  float: left;
+  width : 50px;
+  height: 40px;
+}
+.hidden_url, .hidden_id, #hidden_input_release_id, #hidden_div_id, .hiddenId_projectToArchive, .hiddenId_projectToActive{
+  display: none;
 }
 #plusCreateProjet, #plusCreateTeam, #plusCreateRelease{
   float : left ;
@@ -576,9 +613,11 @@ background-color: rgba(25,25,25,1);
   cursor : pointer ;
 }
 #releases{
-
-
+  overflow-x: auto;
+  overflow-y: hidden;
+  width: 2400px;/*Valeur qui va changer en fonction de l'ajout de colonnes. une colonne = 230px */
 }
+
 .releaseColonne {
   height: 950px ;
   width : 230px;
@@ -614,6 +653,7 @@ background-color: rgba(25,25,25,1);
 }
 .dropDownDescription{
   float: right;
+  cursor: pointer;
 }
 .toggleDescription{
   font-weight: bold;
@@ -622,7 +662,8 @@ background-color: rgba(25,25,25,1);
 #plusCreateSprint{
   float: right ;
   margin-right:5px ;
+  cursor:pointer;
 }
 .toggleDivDesc {
-  padding : 10px ; 
+  padding : 10px ;
 }

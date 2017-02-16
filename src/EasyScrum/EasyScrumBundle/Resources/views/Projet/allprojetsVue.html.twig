@@ -32,22 +32,48 @@
           <li><a href="#">Separated link</a></li>
         </ul>
       </div>
-
-
-       <div  id ="plusCreateProjet" class="fa fa-plus-square-o fa-3x" data-toggle="modal" data-target="#modelCreateProject" aria-hidden="true"></div>
-
-     {{ render(controller('EasyScrumEasyScrumBundle:Projet:create')) }}
-
 </div>
+<div  id ="plusCreateProjet" class="fa fa-plus-square-o fa-3x" data-toggle="modal" data-target="#modelCreateProject" aria-hidden="true"></div>
+{{ render(controller('EasyScrumEasyScrumBundle:Projet:create')) }}
+<img id="archiveIcon" src= {{ asset('bundles/easyscrumeasyscrum/images/archive.png')}} alt="archive" />
 
 
-  <div id="projects">
-    {% for projet in allProjets %}
+
+
+<div class="divtitle"> Mes projets </div>
+  <div id="myprojects">
+    {% for projet in myProjects %}
+    <div class="divProject" >
+      <div class="well" id="projetNom">{{ projet.nom }}
+        <form class="archiveProject" action="{{path('project_archive')}}" method="post">
+          <input class="hiddenId_projectToArchive" type ="text" name="projectToarchive_id" value="{{projet.id}}">
+          <button type ="submit" class="fa fa-circle disableCircle" aria-hidden="true" style="color : green; " onclick="return(confirm('Etes-vous sûr de vouloir archiver ce projet'));">
+        </form>
+      </div>
+      <div id="projetBlock" class="well">
+        <div id="projetRecap">{{ projet.description }}</div>
+        <div class="hidden_id">{{ projet.id}}</div>
+        <div class="hidden_url">{{ path('project_view', {'id' : projet.id}) }}</div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+
+  <div class="divtitle"> Les projets partagés avec moi</div>
+  {% for projet in projects %}
+  <div class="divProject" >
+    <div class="well" id="projetNom">{{ projet.nom }}
+      <form class="archiveProject" action="{{path('project_archive')}}" method="post">
+        <input class="hiddenId_projectToArchive" type ="text" name="projectToarchive_id" value="{{projet.id}}">
+        <button type ="submit" class="fa fa-circle disableCircle" aria-hidden="true" style="color : green; ">
+      </form>
+    </div>
     <div id="projetBlock" class="well">
-      <div class="well" id="projetNom">{{ projet.nom }}</div>
       <div id="projetRecap">{{ projet.description }}</div>
       <div class="hidden_id">{{ projet.id}}</div>
       <div class="hidden_url">{{ path('project_view', {'id' : projet.id}) }}</div>
     </div>
-    {% endfor %}
   </div>
+  {% endfor %}
+</div>
