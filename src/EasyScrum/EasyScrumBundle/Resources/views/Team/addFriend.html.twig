@@ -6,7 +6,7 @@
           <div class="panel-heading model-header" id = "titleaddFriend">Ajouter une personne
             <button type="button" class="close" data-dismiss="modal">&times;</button>
           </div>
-            <form  method="POST" action="{{path('project_create')}}">
+            <form  method="POST" action="{{path('add_friend')}}">
               <div class="panel-body" id="formaddFriendContent">
               {{form_start(form)}}
                 {{ form_widget(form)}}
@@ -16,7 +16,7 @@
 
               {{ form_end(form) }}
               </div>
-          </form>
+            </form>
 
         </div>
    </div>

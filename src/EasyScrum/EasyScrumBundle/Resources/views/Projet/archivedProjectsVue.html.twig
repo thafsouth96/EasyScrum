@@ -7,10 +7,12 @@
       {% for projet in archivedProjects %}
       <div class="divProject" >
         <div class="well" id="projetNom">{{ projet.nom }}
+
           <form class="activeProject" action="{{path('project_active')}}" method="post">
             <input class="hiddenId_projectToActive" type ="text" name="projectToActive_id" value="{{projet.id}}">
-            <button type ="submit" class="fa fa-circle enableCircle" aria-hidden="true" style="color : orange;" onclick="return(confirm('Etes-vous sûr de vouloir activer ce projet'));">
+            <button type ="submit" class="fa fa-circle enableCircle" aria-hidden="true" style="color : orange;" onclick="return(confirm('Etes-vous sûr de vouloir activer ce projet'));"></button>
           </form>
+
         </div>
         <div id="projetBlock" class="well">
           <div id="projetRecap">{{ projet.description }}</div>

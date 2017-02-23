@@ -24,6 +24,13 @@ class UserController extends BaseController
       $name = $form->get('name')->getData();
       $userManager = $this->get('fos_user.user_manager');
       $users = $userManager->findUserByUsername($name);
+
+      $this->addFlash(
+         'error',
+         'je suis là ! '
+       );
+        return $this->render('EasyScrumEasyScrumBundle:Team:showFriend.html.twig',array('users' => $users));  
+
     }
     return $this->render('EasyScrumEasyScrumBundle:Team:addFriend.html.twig', array('form' =>$form->createView()));
 

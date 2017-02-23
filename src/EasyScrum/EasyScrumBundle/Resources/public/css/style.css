@@ -490,20 +490,31 @@ float: left;
   height: 40px;
   margin : 0px ;
 }
+.pName, .rName{
+  float:left;
+}
 .archiveProject, .activeProject{
   float : right ;
 }
 .disableCircle, .enableCircle{
-
   cursor: pointer;
+  background: none;
+  padding: 0px;
+  border: none;
 }
 #archiveIcon{
   margin:1px;
   float: left;
+  cursor : pointer;
   width : 50px;
   height: 40px;
 }
-.hidden_url, .hidden_id, #hidden_input_release_id, #hidden_div_id, .hiddenId_projectToArchive, .hiddenId_projectToActive{
+.editIcon{
+  float : right ;
+  cursor:pointer ;
+  margin : 3px ;
+}
+ .hidden_url, .hidden_id, #hidden_input_release_id, #hidden_div_id, .hiddenId_projectToArchive, .hiddenId_projectToActive{
   display: none;
 }
 #plusCreateProjet, #plusCreateTeam, #plusCreateRelease{
@@ -622,13 +633,19 @@ float: left;
   height: 950px ;
   width : 230px;
   float: left;
-
-
 }
 .releaseRecap {
   padding:10px ;
-
 }
+.releaseName{
+  height: 40px ;
+}
+.edit-release {
+  float: right;
+  margin-right: 4px;
+  cursor: pointer;
+}
+
 .sprintPostIt{
   background: #ebeb5c /*#fefabc*/;
   padding:10px;
@@ -650,6 +667,7 @@ float: left;
 .delete-sprint, .edit-sprint{
   float : right;
   margin: 2px ;
+  cursor: pointer;
 }
 .dropDownDescription{
   float: right;

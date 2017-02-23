@@ -18,7 +18,7 @@ project_create:
 
 
 project_edit:
-  path: /dashboard/projets/{name}/edit
+  path: /dashboard/projets/edit
   defaults: { _controller: EasyScrumEasyScrumBundle:Projet:editProject }
 
 project_view :

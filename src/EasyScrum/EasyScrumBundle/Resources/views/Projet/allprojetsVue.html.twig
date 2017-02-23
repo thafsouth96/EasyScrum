@@ -44,11 +44,14 @@
   <div id="myprojects">
     {% for projet in myProjects %}
     <div class="divProject" >
-      <div class="well" id="projetNom">{{ projet.nom }}
+      <div class="well" id="projetNom">
+        <p class="pName">{{ projet.nom }}</p>
         <form class="archiveProject" action="{{path('project_archive')}}" method="post">
           <input class="hiddenId_projectToArchive" type ="text" name="projectToarchive_id" value="{{projet.id}}">
-          <button type ="submit" class="fa fa-circle disableCircle" aria-hidden="true" style="color : green; " onclick="return(confirm('Etes-vous sûr de vouloir archiver ce projet'));">
+          <button type ="submit" class="fa fa-circle disableCircle" aria-hidden="true" style="color : green; " onclick="return(confirm('Etes-vous sûr de vouloir archiver ce projet'));"></button>
         </form>
+        <div class="fa fa-pencil editIcon" data-toggle="modal" data-target="#modalEditPorject" aria-hidden="true"></div>
+        {{ render(controller('EasyScrumEasyScrumBundle:Projet:editProject')) }}
       </div>
       <div id="projetBlock" class="well">
         <div id="projetRecap">{{ projet.description }}</div>
@@ -72,7 +75,7 @@
     <div id="projetBlock" class="well">
       <div id="projetRecap">{{ projet.description }}</div>
       <div class="hidden_id">{{ projet.id}}</div>
-      <div class="hidden_url">{{ path('project_view', {'id' : projet.id}) }}</div>
+      <div class="hidden_url"> {{ path('project_view', {'id' : projet.id}) }}</div>
     </div>
   </div>
   {% endfor %}

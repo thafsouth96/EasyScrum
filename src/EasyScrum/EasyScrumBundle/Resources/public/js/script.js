@@ -73,7 +73,7 @@ $(document).ready(function(){
  /* Affichage des releases en colonne onclick sur une div d'un projet*/
 
  $("#content").on('click','#projetBlock',function(){
-   urlReleases = $(this).parent().children('.hidden_url').text();
+   urlReleases = $(this).children('.hidden_url').text();
    console.log(urlReleases);
     $.ajax({
       method : "POST",
@@ -130,8 +130,23 @@ $(document).ready(function(){
    //
  });
 $('#content').on('click', '#archiveIcon', function(){
-  console.log("coucou"); 
+  console.log("coucou");
   $('#content').load(urlArchivedProjects);
+
+});
+$('#content').on('click', '.editIcon', function(){
+  var current_name = $(this).parents('#projetNom').children('.pName').text();
+  var current_description= $(this).parents('.divProject').children('#projetBlock').children('#projetRecap').text();
+  $('#edit_project_nom').val(current_name);
+  $('#edit_project_description').val(current_description);
+
+  projectToEdit_id = $(this).parents('.divProject').children('#projetBlock').children('.hidden_id').text();
+
+  if(!$('.hidden_input_project_id').length){
+      $('#formEditProjectContent').append('<input type="text" class="hidden_input_project_id" name="projectToEdit_id" value="'+ projectToEdit_id +'">');
+  } else {
+     $('.hidden_input_project_id').val(projectToEdit_id);
+  }
 
 });
 

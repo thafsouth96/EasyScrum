@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use EasyScrum\EasyScrumBundle\Entity\Projet;
 use EasyScrum\EasyScrumBundle\Form\CreateProject;
+use EasyScrum\EasyScrumBundle\Form\EditProjectType;
 use Doctrine\Common\Collections\ArrayCollection;
 
 class ProjetController extends Controller
@@ -127,20 +128,48 @@ public function createAction(Request $request){
       return $this->render('EasyScrumEasyScrumBundle:Projet:archivedProjectsVue.html.twig', array('archivedProjects' => $archivedProjets ));
     }
 
-    public function editProjectAction($name){
-
+    public function editProjectAction(Request $request){
       $em = $this->getDoctrine()->getManager();
 
+
+
+      $form = $this->createForm(editProjectType::class);
+      //On fait le lien Requête <-> formulaire
+      $form->handleRequest($request);
+
+      //On vérifie que les valeurs entrées sont correctes
+      if($form->isValid() && $form->isSubmitted())
+      {
+        $project_id = $_POST['projectToEdit_id'];
+        var_dump($project_id);
         $repository = $em->getRepository('EasyScrumEasyScrumBundle:Projet');
+        $projet = $repository->findProjectById($project_id);
 
-        $projet = $repository->findProjectByName($name) ;
+        $nom = $form->get('nom')->getData();
+        $description = $form->get('description')->getData();
+        $owner = $projet[0]->getProductOwner();
 
+        $existingProject = $repository->findProjectByName_user($owner, $nom);
+        if($existingProject){
+          $this->addFlash(
+             'success',
+             'Un projet avec le même nom existe déja '
+         );
+           return $this->redirectToRoute('easy_scrum_dashbord');
+        } else {
 
-          if (!$projet) {
-              throw $this->createNotFoundException('projet non trouvé.');
-            }
-
-        return $this->render('EasyScrumEasyScrumBundle:Projet:projetVue.html.twig', array('projet' => $projet));
+        $projet[0]->setNom($nom);
+        $projet[0]->setDescription($description);
+        $em->merge($projet[0]);
+        $em->flush();
+        $this->addFlash(
+           'success',
+           'Le projet est mis à jour!'
+       );
+         return $this->redirectToRoute('easy_scrum_dashbord');
+       }
+      }
+       return $this->render('EasyScrumEasyScrumBundle:Projet:projectEditVue.html.twig', array('form' =>$form->createView()));
     }
     //Affichage des release d'un projet
 
@@ -160,6 +189,7 @@ public function createAction(Request $request){
       }
       return $this->render('EasyScrumEasyScrumBundle:Projet:projetView.html.twig', array('listReleases' => $releases,'id' =>$id));
     }
+
     public function archiveAction(){
       $project_id = $_POST['projectToarchive_id'] ;
       $em = $this->getDoctrine()->getManager();
@@ -175,9 +205,6 @@ public function createAction(Request $request){
          'success',
          'Le projet est bien archivé!'
      );
-
-      // Redirection vers la vue projet "createProject à modifier"
-
        return $this->redirectToRoute('easy_scrum_dashbord');
     }
     public function activeAction(){

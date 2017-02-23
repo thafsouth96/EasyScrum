@@ -23,9 +23,11 @@ function drop(ev){
 <div id="releases">
     {% for release in listReleases %}
     <div class="releaseColonne panel panel-default dropper" ondrop="drop(event)" ondragover="allowDrop(event)">
-      <div class="releaseName panel-heading">{{ release.nom }}
+      <div class="releaseName panel-heading">
+        <p class="rName">{{ release.nom }}</p>
         <span class="fa fa-chevron-down dropDownDescription" aria-hidden="true"></span>
         <span class="fa fa-plus" id="plusCreateSprint" aria-hidden="true" data-toggle="modal" data-target="#modalCreateSprint"></span>
+        <span class="fa fa-pencil edit-release" aria-hidden="true"></span>
         <div class="hidden_release_id" style="display:none; ">{{ release.id }}</div>
       </div>
       {{ render(controller('EasyScrumEasyScrumBundle:Sprint:create')) }}

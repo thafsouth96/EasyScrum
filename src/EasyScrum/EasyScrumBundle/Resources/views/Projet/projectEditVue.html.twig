@@ -1,0 +1,19 @@
+
+<div class="modal fade" id="modalEditPorject" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <div class="panel panle-warning modal-content" id="formEditProject">
+        <div class="panel-heading model-header" id = "titleEditProject">Modifier un projet
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+          <form id= "editProject" method="POST" action="{{path('project_edit')}}">
+            <div class="panel-body" id="formEditProjectContent">
+              {{form_start(form)}}
+                {{ form_widget(form)}}
+                    <input type="submit" value="Modifier" class="btn btn-warning" id="editProjectBtn"/>
+                {{ form_end(form) }}
+              </div>
+          </form>
+
+    </div>
+  </div>
+</div>
