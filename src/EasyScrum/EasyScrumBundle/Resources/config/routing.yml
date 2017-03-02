@@ -35,11 +35,18 @@ project_active :
 show_archive :
   path : /dashboard/archivedProjects
   defaults : { _controller: EasyScrumEasyScrumBundle:Projet:showArchive}
-
+project_delete :
+  path : /dashboard/delete
+  defaults: { _controller: EasyScrumEasyScrumBundle:Projet:delete}
 release_create:
     path: /dashboard/projets/releases/createRelease
     defaults: { _controller: EasyScrumEasyScrumBundle:Release:create }
-
+release_edit:
+    path: /dashboard/projets/release/edit
+    defaults: { _controller: EasyScrumEasyScrumBundle:Release:edit}
+release_delete:
+    path: /dashboard/projects/releases/delete
+    defaults: { _controller: EasyScrumEasyScrumBundle:Release:delete}
 show_teams:
     path: /dashboard/teams
     defaults: { _controller: EasyScrumEasyScrumBundle:Team:showTeams}

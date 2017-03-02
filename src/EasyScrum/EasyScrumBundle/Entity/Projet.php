@@ -84,7 +84,7 @@ class Projet
       private $backlog ;
 
     /** un projet a un seul product Owner
-      * @ManyToOne(targetEntity="EasyScrum\EasyScrumBundle\Entity\User", inversedBy="mesProjets", cascade={"ALL"})
+      * @ManyToOne(targetEntity="EasyScrum\EasyScrumBundle\Entity\User", inversedBy="mesProjets")
       *
       **/
       private $productOwner ;

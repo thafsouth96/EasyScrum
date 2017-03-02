@@ -27,8 +27,13 @@ function drop(ev){
         <p class="rName">{{ release.nom }}</p>
         <span class="fa fa-chevron-down dropDownDescription" aria-hidden="true"></span>
         <span class="fa fa-plus" id="plusCreateSprint" aria-hidden="true" data-toggle="modal" data-target="#modalCreateSprint"></span>
-        <span class="fa fa-pencil edit-release" aria-hidden="true"></span>
+        <span class="fa fa-pencil edit-release" aria-hidden="true" data-toggle="modal" data-target="#modalEditRelease"></span>
+        {{ render(controller('EasyScrumEasyScrumBundle:Release:edit')) }}
         <div class="hidden_release_id" style="display:none; ">{{ release.id }}</div>
+        <form class="deleteRelease" action="{{path('release_delete')}}" method="post">
+          <input class="hiddenId_releaseToDelete" type ="text" name="releaseToDelete_id" value="{{release.id}}">
+          <button type ="submit" class="fa fa-trash-o" aria-hidden="true" onclick="return(confirm('Etes-vous sûr de vouloir supprimer cette release définitivement'));"></button>
+        </form>
       </div>
       {{ render(controller('EasyScrumEasyScrumBundle:Sprint:create')) }}
       <div class ="panel panel-default toggleDivDesc" style="display:none; ">

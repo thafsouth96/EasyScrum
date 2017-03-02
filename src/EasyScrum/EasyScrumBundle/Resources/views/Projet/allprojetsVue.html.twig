@@ -37,15 +37,16 @@
 {{ render(controller('EasyScrumEasyScrumBundle:Projet:create')) }}
 <img id="archiveIcon" src= {{ asset('bundles/easyscrumeasyscrum/images/archive.png')}} alt="archive" />
 
-
-
-
 <div class="divtitle"> Mes projets </div>
   <div id="myprojects">
     {% for projet in myProjects %}
     <div class="divProject" >
       <div class="well" id="projetNom">
         <p class="pName">{{ projet.nom }}</p>
+        <form class="deleteProject" action="{{path('project_delete')}}" method="post">
+          <input class="hiddenId_projectToDelete" type ="text" name="projectToDelete_id" value="{{projet.id}}">
+          <button type ="submit" class="fa fa-trash-o" aria-hidden="true" onclick="return(confirm('Etes-vous sûr de vouloir supprimer ce projet définitivement'));"></button>
+        </form>
         <form class="archiveProject" action="{{path('project_archive')}}" method="post">
           <input class="hiddenId_projectToArchive" type ="text" name="projectToarchive_id" value="{{projet.id}}">
           <button type ="submit" class="fa fa-circle disableCircle" aria-hidden="true" style="color : green; " onclick="return(confirm('Etes-vous sûr de vouloir archiver ce projet'));"></button>

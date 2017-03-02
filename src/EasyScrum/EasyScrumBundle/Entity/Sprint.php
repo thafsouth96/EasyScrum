@@ -33,10 +33,15 @@ class Sprint
       * @ORM\Column(name="description", type="string", length=255, nullable= true)
       */
     private $description;
+    /**
+     * @var boolean
+     *@ORM\Column(name="active", type="boolean")
+     */
+     private $active ;
 
     /**
       * @ORM\ManyToOne(targetEntity="EasyScrum\EasyScrumBundle\Entity\Projet", inversedBy="sprints")
-      * @ORM\JoinColumn(name="projet_id")
+      * @ORM\JoinColumn(name="projet_id", onDelete="CASCADE")
       *
       * })
       */
@@ -44,7 +49,7 @@ class Sprint
 
     /**
       * @ORM\ManyToOne(targetEntity="EasyScrum\EasyScrumBundle\Entity\Release1", inversedBy="sprints")
-      * @ORM\JoinColumn(name="release_id")
+      * @ORM\JoinColumn(name="release_id", onDelete="CASCADE")
       *
       * })
       */
@@ -88,6 +93,12 @@ class Sprint
     {
         return $this->id;
     }
+    public function isActive(){
+        return $this->active ;
+    }
+    public function setActive($active){
+      $this->active = $active ;
+    }
 
     public function getName(){
       return $this->name ;
@@ -112,7 +123,7 @@ class Sprint
       return $this->description ;
     }
     public function setDescription($description){
-      $this->description = $description ; 
+      $this->description = $description ;
     }
     public function getProjet(){
       return $this->projet ;

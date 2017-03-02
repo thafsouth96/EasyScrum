@@ -22,6 +22,12 @@ class Release1
       protected $id;
 
       /**
+       * @var boolean
+       *@ORM\Column(name="active", type="boolean")
+       */
+       private $active ;
+
+      /**
         *
         * @ORM\Column(name="nom", type="string")
         */
@@ -50,8 +56,7 @@ class Release1
 
     /**
       * @ORM\ManyToOne(targetEntity="EasyScrum\EasyScrumBundle\Entity\Projet", inversedBy="releases")
-      * @ORM\JoinColumn(name="projet_id")
-      *
+      * @ORM\JoinColumn(name="projet_id", onDelete="CASCADE")
       * })
       */
 
@@ -86,6 +91,12 @@ class Release1
     }
     public function setNom($nom){
        $this->nom = $nom ;
+    }
+    public function isActive(){
+        return $this->active ;
+    }
+    public function setActive($active){
+      $this->active = $active ;
     }
 
     public function getDateLivraisonP(){
@@ -125,7 +136,7 @@ class Release1
       return $this->sprints ;
     }
     public function addSprint(){
-    
+
     }
 
 }

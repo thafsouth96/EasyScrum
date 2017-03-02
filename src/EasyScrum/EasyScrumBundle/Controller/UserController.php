@@ -6,14 +6,15 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use FOS\UserBundle\Controller\RegistrationController as BaseController;
 use Symfony\Component\HttpFoundation\Request;
 use EasyScrum\EasyScrumBundle\Form\AddFriendType ;
+use Symfony\Component\HttpFoundation\Response ;
 
 class UserController extends BaseController
 {
 
-  public function addFriendAction(Request $request, $users){
+public function addFriendAction(Request $request/*, $users*/){
 
 
-    if( $this->container->get( 'security.authorization_checker' )->isGranted( 'IS_AUTHENTICATED_FULLY' ) )
+    /*if( $this->container->get( 'security.authorization_checker' )->isGranted( 'IS_AUTHENTICATED_FULLY' ) )
     {
      $current_user = $this->container->get('security.token_storage')->getToken()->getUser();
     }
@@ -29,12 +30,13 @@ class UserController extends BaseController
          'error',
          'je suis là ! '
        );
-        return $this->render('EasyScrumEasyScrumBundle:Team:showFriend.html.twig',array('users' => $users));  
+        return $this->render('EasyScrumEasyScrumBundle:Team:showFriend.html.twig',array('users' => $users));
 
-    }
-    return $this->render('EasyScrumEasyScrumBundle:Team:addFriend.html.twig', array('form' =>$form->createView()));
+    }*/
+    return new Response("") ;
+    /*$this->render('EasyScrumEasyScrumBundle:Team:addFriend.html.twig', array('form' =>$form->createView()));*/
 
-    }
+  }
 
 
 }

@@ -130,9 +130,6 @@ public function createAction(Request $request){
 
     public function editProjectAction(Request $request){
       $em = $this->getDoctrine()->getManager();
-
-
-
       $form = $this->createForm(editProjectType::class);
       //On fait le lien Requête <-> formulaire
       $form->handleRequest($request);
@@ -224,6 +221,32 @@ public function createAction(Request $request){
      );
 
      return $this->redirectToRoute('easy_scrum_dashbord');
+    }
+    public function deleteAction(){
+      $project_id =$_POST['projectToDelete_id'];
+      $em = $this->getDoctrine()->getManager();
+
+      $repository = $em->getRepository('EasyScrumEasyScrumBundle:Projet');
+      $project = $repository->findOneBy(array('id' => $project_id));
+      var_dump($project);
+      //$releases = $project->getReleases();
+      // à compléter
+      /*$sprints = new ArrayCollection();
+      foreach ($releases as $release) {
+        $sprints = $release->getSprints();
+      }
+
+      $allChilds = new ArrayCollection(
+        array_merge($listMesProjets->toArray(), $listProjets->toArray())
+      );*/
+      $em->remove($project);
+      $em->flush();
+      $this->addFlash(
+         'success',
+         'Le projet est bien supprimé!'
+     );
+       return $this->redirectToRoute('easy_scrum_dashbord');
+
     }
 
 

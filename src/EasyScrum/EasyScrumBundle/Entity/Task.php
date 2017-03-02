@@ -34,6 +34,12 @@ class Task
       */
     private $description;
 
+    /**
+     * @var boolean
+     *@ORM\Column(name="active", type="boolean", options={"default" : true})
+     */
+     private $active ;
+
 
     /**
       * @ORM\ManyToOne(targetEntity="EasyScrum\EasyScrumBundle\Entity\UserStory", inversedBy="tasks")
@@ -43,7 +49,7 @@ class Task
 
     /** une tache a un repsonsable
       * @ORM\ManyToOne(targetEntity="EasyScrum\EasyScrumBundle\Entity\User", inversedBy="tasks")
-      * @ORM\JoinColumn(name="responsable_id")
+      * @ORM\JoinColumn(name="responsable_id", onDelete="CASCADE")
       *
       * })
       */
@@ -63,6 +69,12 @@ class Task
     }
     public function setName($name){
       $this->name = $name;
+    }
+    public function isActive(){
+        return $this->active ;
+    }
+    public function setActive($active){
+      $this->active = $active ;
     }
     public function getDescription(){
       return $this->description ;

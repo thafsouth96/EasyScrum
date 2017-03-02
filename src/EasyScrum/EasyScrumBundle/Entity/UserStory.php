@@ -34,7 +34,7 @@ class UserStory
 
     /**
       * @ORM\ManyToOne(targetEntity="EasyScrum\EasyScrumBundle\Entity\Sprint", inversedBy="userStories")
-      * @ORM\JoinColumn(name="sprint_id")
+      * @ORM\JoinColumn(name="sprint_id", onDelete="CASCADE")
       *
       * })
       */

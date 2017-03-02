@@ -43,6 +43,7 @@ class SprintController extends Controller
 
          else {
            $sprint->setRelease($release);
+           $sprint->setActive(true); 
            $sprint->setProjet($release->getProjet());
            $release->addSprint($sprint);
            $em->persist($sprint);
@@ -59,7 +60,7 @@ class SprintController extends Controller
     }
 
     public function showAction(){
-      
+
     }
 
     public function deleteAction(){
